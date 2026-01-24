@@ -1,3 +1,8 @@
+// Home Page Styles
+
+  //=================//
+//  Hero Banner Styles //
+  //=================//
 .home-banner {
   background-image: url('hero-image.png');
   background-size: cover;
@@ -8,42 +13,264 @@
   justify-content: center;
   color: white;
   text-align: center;
-}
+  position: relative;
+  overflow: hidden;
 
-.hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(30, 58, 138, 0.55); // blue daylight
-  transition: background 0.6s ease;
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(30, 58, 138, 0.55); // blue daylight
+    transition: background 0.6s ease;
+    overflow: hidden;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+
+    .hero-text {
+      margin-bottom: 2rem;
+
+      h1 {
+        font-size: 8rem;
+        line-height: 1;
+      }
+
+      p {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        filter:
+        drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07))
+        drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+      }
+    }
+
+    .hero-search {
+      display: flex;
+      align-items: stretch;
+      background: white;
+      border-radius: 999px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      width: 80%;
+      max-width: 1200px;
+
+
+      .search-bar {
+        width: 100%;
+        display: flex;
+        align-items: stretch;
+        background: white;
+        border-radius: 999px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+
+        .search-field {
+          flex: 1;
+          padding: 0.75rem 1.5rem;
+          cursor: pointer;
+          position: relative;
+
+          &:hover {
+            background: rgba(0, 0, 0, 0.03);
+          }
+
+          .search-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #6b7280; // muted gray
+            margin-bottom: 0.25rem;
+            display: block;
+          }
+
+          .search-value {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            color: #111827;
+
+            svg {
+              width: 16px;
+              height: 16px;
+              color: var(--accent);
+            }
+          }
+        }
+
+        .search-action {
+          display: flex;
+          align-items: center;
+          padding: 0.5rem;
+
+          .search-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            height: 56px;
+            padding: 0 2rem;
+            border-radius: 999px;
+            border: none;
+            background: #1ea755;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+
+            &:hover {
+              background: #16823d;
+            }
+
+            svg {
+              width: 18px;
+              height: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 html.golden-hour .hero__overlay {
   background: rgba(212, 175, 55, 0.55); // golden hour
 }
 
-.hero__content {
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  width: 90%;
-  max-width: 1200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
+.search-field:not(:last-of-type)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: #e5e7eb;
+}
 
-  h1 {
-    font-size: 8rem;
-    line-height: 1;
+@media (max-width: 768px) {
+  .search-field:not(:last-of-type)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-bar {
+    flex-direction: column;
+    border-radius: 1rem;
   }
 
-  p {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-    filter:
-    drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07))
-    drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+  .search-field {
+    border-bottom: 1px solid #e5e7eb;
+  }
+}
+
+html.golden-hour .search-bar {
+  background: white;
+}
+
+html.golden-hour .search-value {
+  color: #5c4a2e; // same brown you saw in inspection
+}
+  //==============//
+// End Hero Banner //
+  //=============//
+
+.why-albania {
+  padding: 6rem 1.5rem;
+  background: var(--background);
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+
+      h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.125rem;
+        color: var(--muted-foreground);
+        max-width: 640px;
+        margin: 0 auto;
+      }
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+
+      @media (max-width: 900px) {
+          grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        padding: 2rem;
+        text-align: center;
+
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+        &:hover {
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+          transform: translateY(-2px);
+        }
+
+        h3 {
+          font-family: "Playfair Display", serif;
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: var(--primary);
+          margin-bottom: 0.75rem;
+        }
+
+        p {
+          font-size: 1rem;
+          line-height: 1.6;
+          color: var(--muted-foreground);
+        }
+
+        .feature-icon {
+          width: 64px;
+          height: 64px;
+          margin: 0 auto 1.5rem;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          border-radius: 50%;
+          background: rgba(212, 175, 55, 0.12); // accent/10
+
+          svg {
+            width: 32px;
+            height: 32px;
+            color: var(--accent);
+          }
+        }
+      }
+    }
+
   }
 }
