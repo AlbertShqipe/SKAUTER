@@ -1,6 +1,6 @@
 .navbar {
   position: fixed;
-  top: 0;
+  top: env(safe-area-inset-top);
   width: 100%;
   background: transparent;
   margin: 0 auto;
