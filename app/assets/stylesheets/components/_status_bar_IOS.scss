@@ -17,10 +17,10 @@ html:not(.golden-hour) body:not(.scrolled) .status-bar-fill {
 
 /* Golden hour hero */
 html.golden-hour body:not(.scrolled) .status-bar-fill {
-  background: rgba(122, 88, 25, 0.55);
+  background: rgba(122, 88, 25, 0.55) !important;
 }
 
 /* Scrolled navbar */
 body.scrolled .status-bar-fill {
-  background: #ffffff;
+  background: #ffffff !important;
 }
