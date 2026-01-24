@@ -1,1 +1,49 @@
-// Specific CSS for your home-page
+.home-banner {
+  background-image: url('hero-image.png');
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 58, 138, 0.55); // blue daylight
+  transition: background 0.6s ease;
+}
+
+html.golden-hour .hero__overlay {
+  background: rgba(212, 175, 55, 0.55); // golden hour
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+
+  h1 {
+    font-size: 8rem;
+    line-height: 1;
+  }
+
+  p {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    filter:
+    drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07))
+    drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+  }
+}

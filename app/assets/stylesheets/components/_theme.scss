@@ -1,0 +1,58 @@
+/* Default (daylight) theme */
+:root {
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(222 47% 11%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(222 47% 11%);
+  --primary: hsl(209 100% 20%);
+  --accent: hsl(46 63% 53%);
+  --destructive: hsl(351 90% 40%);
+  --border: hsl(214 20% 92%);
+  --radius: 0.5rem;
+}
+
+/* Golden Hour theme */
+html.golden-hour {
+  --background: hsl(27 45% 8%);
+  --foreground: hsl(46 80% 85%);
+  --card: hsl(27 35% 12%);
+  --card-foreground: hsl(46 70% 80%);
+  --primary: hsl(46 63% 53%);
+  --accent: hsl(46 63% 53%);
+  --border: hsl(46 40% 25%);
+}
+
+.theme-toggle {
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.theme-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease;
+}
+
+/* Active states */
+html:not(.golden-hour) .theme-btn.sun {
+  background: white;
+  color: #1a1208;
+}
+
+html.golden-hour .theme-btn.moon {
+  background: var(--accent);
+  color: #1a1208;
+}

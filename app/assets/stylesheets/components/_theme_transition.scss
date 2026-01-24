@@ -1,0 +1,32 @@
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 175, 55, 0.3) 30%,
+    rgba(212, 175, 55, 0.6) 50%,
+    rgba(212, 175, 55, 0.3) 70%,
+    transparent 100%
+  );
+}
+
+body.mode-transitioning::before {
+  animation: magicalWipe 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes magicalWipe {
+  0%   { left: -100%; opacity: 0; }
+  5%   { opacity: 1; }
+  50%  { left: 0%; opacity: 1; }
+  95%  { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
