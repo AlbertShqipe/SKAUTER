@@ -22,36 +22,12 @@ html.golden-hour {
   --border: hsl(46 40% 25%);
 }
 
-.theme-toggle {
-  display: flex;
-  gap: 6px;
-  padding: 4px;
-  border-radius: 999px;
-  background: rgba(178, 178, 178, 0.25);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-}
+
 
 html.golden-hour .theme-toggle {
   background: rgba(0, 0, 0, 0.45);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-}
-
-.theme-btn {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: none;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: rgba(255, 255, 255, 0.7);
-  transition: all 0.2s ease;
-  opacity: 0.8;
 }
 
 /* Active states */
@@ -65,13 +41,13 @@ html.golden-hour .theme-btn.moon {
   color: #1a1208;
 }
 
-.theme-btn:hover {
-  transform: scale(1.1);
-  opacity: 1;
-  color: black;
+html.golden-hour .navbar {
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
-.theme-btn:focus {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+html.golden-hour .hero__overlay {
+  background: rgba(212, 175, 55, 0.55); // golden hour
 }

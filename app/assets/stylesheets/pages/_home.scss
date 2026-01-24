@@ -16,6 +16,10 @@
   position: relative;
   overflow: hidden;
 
+  @media (max-width: 760px) {
+    height: 100dvh;
+  }
+
   .hero__overlay {
     position: absolute;
     inset: 0;
@@ -37,12 +41,20 @@
     color: white;
     text-align: center;
 
+    @media (max-width: 760px) {
+      padding: 6rem 1.5rem;
+    }
+
     .hero-text {
       margin-bottom: 2rem;
 
       h1 {
         font-size: 8rem;
         line-height: 1;
+
+        @media (max-width: 760px) {
+          font-size: 4.5rem;
+        }
       }
 
       p {
@@ -64,6 +76,11 @@
       width: 80%;
       max-width: 1200px;
 
+      @media (max-width: 768px) {
+        border-radius: 0.75rem;
+        width: 100%;
+      }
+
 
       .search-bar {
         width: 100%;
@@ -74,11 +91,20 @@
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         overflow: hidden;
 
+        @media (max-width: 768px) {
+          flex-direction: column;
+          border-radius: 0.75rem;
+        }
+
         .search-field {
           flex: 1;
           padding: 0.75rem 1.5rem;
           cursor: pointer;
           position: relative;
+
+          @media (max-width: 768px) {
+            border-bottom: 1px solid #e5e7eb;
+          }
 
           &:hover {
             background: rgba(0, 0, 0, 0.03);
@@ -87,9 +113,14 @@
           .search-label {
             font-size: 0.7rem;
             font-weight: 600;
-            color: #6b7280; // muted gray
+            color: #6b7280;
             margin-bottom: 0.25rem;
             display: block;
+
+            @media (max-width: 760px) {
+              font-size: 0.75rem;
+              text-align: left;
+            }
           }
 
           .search-value {
@@ -100,6 +131,10 @@
             gap: 0.5rem;
             font-weight: 500;
             color: #111827;
+
+            @media (max-width: 760px) {
+              justify-content: start;
+            }
 
             svg {
               width: 16px;
@@ -128,6 +163,13 @@
             cursor: pointer;
             transition: background 0.2s ease;
 
+            @media (max-width: 760px) {
+              width: 100%;
+              justify-content: center;
+              text-align: center;
+              border-radius: 0.75rem;
+            }
+
             &:hover {
               background: #16823d;
             }
@@ -141,10 +183,6 @@
       }
     }
   }
-}
-
-html.golden-hour .hero__overlay {
-  background: rgba(212, 175, 55, 0.55); // golden hour
 }
 
 .search-field:not(:last-of-type)::after {
@@ -163,16 +201,7 @@ html.golden-hour .hero__overlay {
   }
 }
 
-@media (max-width: 768px) {
-  .search-bar {
-    flex-direction: column;
-    border-radius: 1rem;
-  }
 
-  .search-field {
-    border-bottom: 1px solid #e5e7eb;
-  }
-}
 
 html.golden-hour .search-bar {
   background: white;
