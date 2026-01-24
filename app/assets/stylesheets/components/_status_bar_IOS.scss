@@ -5,25 +5,22 @@
   right: 0;
   height: env(safe-area-inset-top);
   background: transparent;
-  z-index: 999;
-  transition: background-color 0.6s ease;
+  z-index: 2000;
   pointer-events: none;
+  transition: background-color 0.6s ease;
 }
 
-body:not(.golden-hour):not(.scrolled) {
-  .status-bar-fill {
-    background: rgba(30, 58, 138, 0.55); // blue overlay
-  }
+/* Daylight hero */
+html:not(.golden-hour) body:not(.scrolled) .status-bar-fill {
+  background: rgba(30, 58, 138, 0.55);
 }
 
-body.golden-hour:not(.scrolled) {
-  .status-bar-fill {
-    background: rgba(122, 88, 25, 0.55); // warm gold
-  }
+/* Golden hour hero */
+html.golden-hour body:not(.scrolled) .status-bar-fill {
+  background: rgba(122, 88, 25, 0.55);
 }
 
-body.scrolled {
-  .status-bar-fill {
-    background: #ffffff;
-  }
+/* Scrolled navbar */
+body.scrolled .status-bar-fill {
+  background: #ffffff;
 }
