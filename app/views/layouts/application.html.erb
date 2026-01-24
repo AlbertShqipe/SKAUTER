@@ -18,6 +18,15 @@
     <script>
       document.addEventListener("DOMContentLoaded", () => lucide.createIcons())
     </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      document.addEventListener("turbo:load", () => {
+        if (window.lucide) {
+          lucide.createIcons()
+        }
+      })
+    </script>
   </head>
 
   <body><%= render "shared/navbar" %>
