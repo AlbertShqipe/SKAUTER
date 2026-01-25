@@ -1,18 +1,18 @@
+/* Base */
 .status-bar-fill {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: env(safe-area-inset-top);
-  background: transparent;
   z-index: 2000;
+  transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
-  transition: background-color 0.6s ease;
 }
 
 /* Daylight hero */
 html:not(.golden-hour) body:not(.scrolled) .status-bar-fill {
-  background: rgba(30, 58, 138, 0.55);
+  background: rgba(30, 58, 138, 0.55) !important;
 }
 
 /* Golden hour hero */
