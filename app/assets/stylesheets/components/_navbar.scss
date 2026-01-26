@@ -25,24 +25,14 @@
     .navbar-brand {
       font-size: 1.5rem;
       font-weight: 700;
-      color: white;
+      color: var(--text);
+      // color: white;
     }
 
     .navigation-links {
       display: flex;
       align-items: center;
       gap: 1.5rem;
-
-      a {
-        color: white;
-        text-decoration: none;
-        font-weight: 500;
-
-        &:hover {
-          color: var(--accent);
-          cursor: pointer;
-        }
-      }
     }
   }
 }
@@ -56,5 +46,16 @@
   .navbar-brand,
   .navigation-links a {
     color: #111; // dark text
+  }
+}
+
+.navbar.not-home {
+  background: var(--background);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+
+  .navbar-brand,
+  .navigation-links .link-navbar {
+    color: var(--foreground);
   }
 }

@@ -19,18 +19,35 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.7);
-  transition: all 0.2s ease;
-  opacity: 0.8;
 
-  &::hover {
-    transform: scale(1.1);
-    opacity: 1;
-    color: black;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
   }
 
-  &::focus {
+  &:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    stroke: rgba(0, 0, 0, 0.75);
+    transition: stroke 0.2s ease, opacity 0.2s ease;
+    opacity: 0.85;
+  }
+
+  &:hover svg {
+    stroke: #ffffff;
+    fill: #ffffff;
+    opacity: 1;
+  }
+
+  &:focus-visible svg {
+    stroke: var(--accent);
+    fill: var(--accent);
+    opacity: 1;
   }
 }

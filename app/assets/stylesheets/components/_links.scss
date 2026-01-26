@@ -1,0 +1,11 @@
+.link-navbar {
+  text-decoration: none;
+  color: var(--link-navbar);
+  font-weight: 500;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    // color: var(--primary);
+  }
+}
