@@ -7,7 +7,7 @@ class RegionsController < ApplicationController
   def index
     @regions = Location.all
     @distinct_cities = Location.where(available: true).distinct.pluck(:city).sort
-    @distinct_counties = Location.where(available: true).distinct.pluck(:county).sort
+    @distinct_counties = Location.where(available: true).distinct.pluck(:county.name).sort
 
   end
 end

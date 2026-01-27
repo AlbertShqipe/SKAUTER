@@ -21,7 +21,7 @@
 
     <div class="admin-grid">
       <div><strong>City</strong><br><%= @location.city %></div>
-      <div><strong>County</strong><br><%= @location.county %></div>
+      <div><strong>County</strong><br><%= @location.county.name %></div>
       <div><strong>Type</strong><br><%= @location.location_type %></div>
       <div><strong>Capacity</strong><br><%= @location.capacity %></div>
       <div><strong>Price / hour</strong><br>€<%= @location.price_per_hour %></div>
