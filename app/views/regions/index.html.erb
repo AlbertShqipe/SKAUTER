@@ -1,7 +1,8 @@
 <h1>Explore Regions</h1>
 
 <div class="regions-grid">
+  <h1>Regions <%= @regions.count %></h1>
   <% @regions.each do |region| %>
-    <%= link_to region, region_path(region.parameterize), class: "region-card" %>
+    <%= link_to region.name, region_path(region.city.parameterize), class: "region-card" %>
   <% end %>
 </div>

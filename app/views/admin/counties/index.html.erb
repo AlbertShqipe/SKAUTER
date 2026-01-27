@@ -1,0 +1,30 @@
+<h1>Counties</h1>
+
+<%= link_to "New County", new_admin_county_path, class: "btn" %>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Locations</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @counties.each do |county| %>
+      <tr>
+        <td>
+          <% if county.cover_image.attached? %>
+            <%= image_tag url_for(county.cover_image), size: "80x60" %>
+          <% end %>
+        </td>
+        <td><%= county.name %></td>
+        <td><%= county.locations.count %></td>
+        <td>
+          <%= link_to "Edit", edit_admin_county_path(county) %> |
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

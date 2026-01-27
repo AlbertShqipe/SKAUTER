@@ -10,21 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_01_27_104921) do
+ActiveRecord::Schema[7.1].define(version: 2026_01_27_150305) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "active_storage_attachments", force: :cascade do |t|
+  create_table "active_storage_attachments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
     t.uuid "record_id", null: false
+    t.uuid "blob_id", null: false
+    t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", force: :cascade do |t|
+  create_table "active_storage_blobs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -36,10 +37,20 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_27_104921) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "active_storage_variant_records", force: :cascade do |t|
-    t.bigint "blob_id", null: false
+  create_table "active_storage_variant_records", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "counties", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slug", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_counties_on_name", unique: true
+    t.index ["slug"], name: "index_counties_on_slug", unique: true
   end
 
   create_table "locations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -47,25 +58,23 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_27_104921) do
     t.text "description"
     t.string "location_type"
     t.string "city"
-    t.string "county"
     t.string "address"
     t.decimal "latitude", precision: 10, scale: 6
     t.decimal "longitude", precision: 10, scale: 6
     t.integer "price_per_hour"
     t.integer "price_per_day"
     t.integer "capacity"
-    t.string "cover_image"
     t.boolean "available", default: true
     t.string "host_name"
     t.boolean "host_verified", default: false
     t.string "tags", default: [], array: true
     t.string "amenities", default: [], array: true
-    t.string "images", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "county_id"
     t.index ["amenities"], name: "index_locations_on_amenities", using: :gin
     t.index ["city"], name: "index_locations_on_city"
-    t.index ["county"], name: "index_locations_on_county"
+    t.index ["county_id"], name: "index_locations_on_county_id"
     t.index ["location_type"], name: "index_locations_on_location_type"
     t.index ["tags"], name: "index_locations_on_tags", using: :gin
   end
@@ -85,4 +94,5 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_27_104921) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "locations", "counties"
 end

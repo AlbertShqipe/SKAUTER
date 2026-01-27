@@ -13,6 +13,7 @@
   --link: hsl(209 100% 40%);
   --text: hsl(0, 0%, 100%);
   --link-navbar: hsl(0, 0%, 100%);
+  --svg-stroke: rgba(0, 0, 0, 0.75);
 }
 
 /* Golden Hour theme */
@@ -28,6 +29,7 @@ html.golden-hour {
   --link: hsl(46 80% 85%);
   --text: hsl(0, 0%, 0%);
   --link-navbar: hsl(27, 45%, 8%);
+  --svg-stroke: rgba(255, 255, 255, 0.75);
 }
 
 

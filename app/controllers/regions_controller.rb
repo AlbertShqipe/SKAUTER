@@ -1,17 +1,13 @@
 class RegionsController < ApplicationController
   def show
-    slug = params[:slug]
-
-    # Find the real city by matching the slug
-    cities = Location.where(available: true).distinct.pluck(:city)
-    @city = cities.find { |c| c.to_s.parameterize == slug }
-
-    return redirect_to(regions_path, alert: "Region not found") unless @city
-
-    @locations = Location.where(city: @city, available: true).order(created_at: :desc)
+    @county = County.find_by!(slug: params[:slug])
+    @locations = @county.locations.where(available: true)
   end
 
   def index
-    @regions = Location.where(available: true).distinct.pluck(:city).sort
+    @regions = Location.all
+    @distinct_cities = Location.where(available: true).distinct.pluck(:city).sort
+    @distinct_counties = Location.where(available: true).distinct.pluck(:county).sort
+
   end
 end

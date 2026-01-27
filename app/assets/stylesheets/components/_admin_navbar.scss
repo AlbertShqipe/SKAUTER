@@ -1,0 +1,26 @@
+.admin-navbar {
+  background: linear-gradient(90deg, #111, #1a1a1a);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.admin-badge {
+  margin-left: 10px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #111;
+  background: gold;
+  border-radius: 4px;
+}
+
+.nav-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255,255,255,0.2);
+  margin: 0 12px;
+}
+
+.link-navbar.danger {
+  color: #ff6b6b;
+}

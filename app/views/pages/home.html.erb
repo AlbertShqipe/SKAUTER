@@ -90,3 +90,33 @@
     </div>
   </div>
 </section>
+<section class="home-regions">
+  <div class="container">
+    <header class="section-header">
+      <h2>Explore by Region</h2>
+      <p>Each county offers unique cinematic possibilities</p>
+    </header>
+    <div class="regions-grid">
+      <% @counties.each do |county| %>
+        <% if county.slug.present? %>
+          <%= link_to region_path(county.slug), class: "region-card" do %>
+            <div class="region-image">
+              <% if county.cover_image.attached? %>
+                <%= image_tag url_for(county.cover_image) %>
+              <% else %>
+                <%= image_tag "default.jpg", alt: county.name %>
+              <% end %>
+
+              <div class="overlay">
+                <h3><%= county.name %></h3>
+                <span>
+                  <%= pluralize(county.locations_count.to_i, "location") %>
+                </span>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>

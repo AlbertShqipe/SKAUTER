@@ -159,18 +159,18 @@ body.admin-layout {
 
 /* Badges */
 
-.badge {
+.badge-admin {
   padding: 4px 8px;
   font-size: 12px;
   border-radius: 999px;
 }
 
-.badge.success {
+.badge-admin.success {
   background: #dcfce7;
   color: #166534;
 }
 
-.badge.muted {
+.badge-admin.muted {
   background: #e5e7eb;
   color: #374151;
 }

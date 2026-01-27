@@ -1,4 +1,6 @@
 class Location < ApplicationRecord
+  belongs_to :county
+
   has_one_attached :cover_image
   has_many_attached :images
 

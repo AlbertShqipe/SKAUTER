@@ -29,13 +29,12 @@
 
           <td><%= location.city %></td>
 
-          <td>
+
             <% if location.available %>
-              <span class="badge success">Available</span>
+              <td><span class="badge-admin success">Available</span></td>
             <% else %>
-              <span class="badge muted">Hidden</span>
+              <td><span class="badge-admin muted">Hidden</span></td>
             <% end %>
-          </td>
 
           <td class="right">
             <%= link_to "Edit",

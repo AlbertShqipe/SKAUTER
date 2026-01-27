@@ -1,0 +1,26 @@
+<nav class="navbar admin-navbar <%= current_page?("/") ? "" : "not-home" %>" data-controller="navbar">
+  <div class="navbar-container">
+    <!-- Brand -->
+    <div class="navbar-brand-wrapper">
+      <%= link_to root_path, class: "navbar-brand" do %>
+        Skauter.al
+      <% end %>
+
+      <span class="admin-badge">ADMIN</span>
+    </div>
+
+    <!-- Links -->
+    <nav class="navigation-links">
+      <%= link_to "Explore", regions_path, class: "link-navbar" %>
+      <%= link_to "Locations", admin_locations_path, class: "link-navbar" %>
+      <%= link_to "Counties", admin_counties_path, class: "link-navbar" %>
+
+      <span class="nav-divider"></span>
+
+      <%= link_to "Sign Out",
+            destroy_user_session_path,
+            data: { turbo_method: :delete },
+            class: "link-navbar danger" %>
+    </nav>
+  </div>
+</nav>

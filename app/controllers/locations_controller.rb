@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   def index
-    @locations = Location.where(available: true)
+    @locations = Location.all.order(created_at: :asc)
   end
 
   def show

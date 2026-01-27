@@ -1,4 +1,4 @@
-<nav class="navbar <%= current_page?("/") ? "" : "not-home" %>"" data-controller="navbar" data-action="scroll@window->navbar#onScroll" >
+<nav class="navbar <%= current_page?("/") ? "" : "not-home" %>" data-controller="navbar" data-action="scroll@window->navbar#onScroll" >
   <div class="navbar-container">
     <div>
       <%= link_to "/", class: "navbar-brand" do %>
@@ -7,7 +7,12 @@
     </div>
     <nav class="navigation-links">
       <%= link_to "Explore", regions_path, class: "link-navbar" %>
-      <a class="link-navbar">List Venue</a>
+      <% if user_signed_in? && current_user.admin? %>
+        <%= link_to "Admin", admin_root_path, class: "link-navbar" %>
+      <% else %>
+        <a class="link-navbar">List Venue</a>
+      <% end %>
+
       <div class="theme-toggle" data-controller="theme">
         <button class="theme-btn sun" data-action="theme#setDaylight" aria-label="Daylight mode">
           <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" class="sun">
@@ -21,7 +26,7 @@
           </svg>
         </button>
       </div>
-      <a href="" class="btn btn-primary btn-gold-shimmer">
+      <a href="" class="btn btn-navbar btn-gold-shimmer">
         Get Started
       </a>
 

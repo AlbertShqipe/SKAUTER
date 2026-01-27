@@ -34,14 +34,15 @@
   svg {
     width: 16px;
     height: 16px;
-    stroke: rgba(0, 0, 0, 0.75);
+    stroke: var(--svg-stroke);
+    fill: var(--svg-stroke);
     transition: stroke 0.2s ease, opacity 0.2s ease;
     opacity: 0.85;
   }
 
   &:hover svg {
-    stroke: #ffffff;
-    fill: #ffffff;
+    stroke: var(--svg-stroke, 1);
+    fill: var(--svg-stroke, 1);
     opacity: 1;
   }
 

@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :locations
     root to: "locations#index"
+    resources :counties
   end
 end

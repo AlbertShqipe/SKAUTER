@@ -36,7 +36,13 @@
 
   <body data-controller="theme">
     <div class="status-bar-fill"></div>
-    <%= render "shared/navbar" %>
+
+    <% if user_signed_in? && current_user.admin?%>
+      <%= render "shared/admin_navbar" %>
+    <% else %>
+      <%= render "shared/navbar" %>
+    <% end %>
+
     <%= render "shared/flashes" %>
 
     <%= yield %>

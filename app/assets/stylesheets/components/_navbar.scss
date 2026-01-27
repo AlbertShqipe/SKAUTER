@@ -53,9 +53,17 @@
   background: var(--background);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+  position: relative;
 
   .navbar-brand,
   .navigation-links .link-navbar {
     color: var(--foreground);
+  }
+
+  .nav-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--foreground);
+    margin: 0 12px;
   }
 }

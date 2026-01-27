@@ -1,15 +1,138 @@
+/* =========================
+   REGION SHOW PAGE
+========================= */
+
+.region-show {
+  padding: 0;
+  background: var(--color-bg, #fff);
+  color: var(--color-text, #0f172a);
+}
+
+/* ---------- HERO ---------- */
+
 .region-hero {
   height: 60vh;
-  background: url("/images/regions/tirana.jpg") center / cover no-repeat;
+  min-height: 420px;
   position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
 }
 
 .region-hero .overlay {
-  background: linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.85));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 6vw, 4rem);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.85)
+  );
+  color: #fff;
+  width: 100%;
   height: 100%;
-  color: white;
-  padding: 4rem;
+
+  .hero-content {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+  }
 }
+
+/* Back link */
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+
+  &:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+}
+
+/* Hero text */
+
+.region-hero h1 {
+  font-family: var(--font-serif, serif);
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.region-hero .tagline {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #f5d47a;
+  margin-bottom: 1rem;
+}
+
+.region-hero .description {
+  max-width: 640px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ---------- LOCATIONS SECTION ---------- */
+
+.locations-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem 5rem;
+}
+
+/* Section header */
+
+.section-header-show {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.section-header-show h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.section-header-show span {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+/* Map button */
+
+.map-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  background: #f8fafc;
+  color: #0f172a;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #0f172a;
+    color: #fff;
+    border-color: #0f172a;
+  }
+}
+
+/* ---------- LOCATIONS GRID ---------- */
 
 .locations-grid {
   display: grid;
@@ -17,6 +140,32 @@
   gap: 2rem;
 }
 
-.region-show {
-  padding: 4rem 2rem;
+/* Optional: subtle entrance animation */
+
+.locations-grid > * {
+  animation: fadeUp 0.4s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 768px) {
+  .region-hero {
+    height: 50vh;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
