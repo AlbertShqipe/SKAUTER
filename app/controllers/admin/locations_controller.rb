@@ -3,7 +3,7 @@ class Admin::LocationsController < Admin::BaseController
   before_action :normalize_arrays, only: %i[create update]
 
   def index
-    @locations = Location.all
+    @locations = Location.all.order(created_at: :asc)
   end
 
   def show
