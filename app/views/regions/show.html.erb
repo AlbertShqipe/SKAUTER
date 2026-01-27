@@ -1,0 +1,29 @@
+<div class="region-show">
+  <section class="region-hero">
+    <div class="overlay">
+      <%= link_to "← Back to Home", root_path, class: "back-link" %>
+
+      <h1><%= @region %></h1>
+      <p class="tagline">Urban Energy & Contrasts</p>
+
+      <p class="description">
+        Albania’s capital blends brutalist communist architecture with vibrant modern life.
+        From iconic landmarks to hidden gems, <%= @region %> offers unique filming locations.
+      </p>
+    </div>
+  </section>
+  <section class="locations-section">
+    <div class="section-header">
+      <h2>Available Locations</h2>
+      <span><%= pluralize(@locations.count, "location") %> in <%= @region %></span>
+
+      <%= link_to "View on Map", "#", class: "map-btn" %>
+    </div>
+
+    <div class="locations-grid">
+      <% @locations.each do |location| %>
+        <%= render "locations/card", location: location %>
+      <% end %>
+    </div>
+  </section>
+</div>

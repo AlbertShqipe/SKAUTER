@@ -1,0 +1,17 @@
+<div class="location-card">
+  <%= link_to location_path(location) do %>
+    <div class="image-wrapper">
+
+      <% if location.cover_image.attached? %>
+        <%= image_tag url_for(location.cover_image), alt: location.name %>
+      <% end %>
+
+      <span class="badge"><%= location.city %></span>
+    </div>
+
+    <div class="card-content">
+      <h3><%= location.name %></h3>
+      <p><%= truncate(location.description, length: 80) %></p>
+    </div>
+  <% end %>
+</div>

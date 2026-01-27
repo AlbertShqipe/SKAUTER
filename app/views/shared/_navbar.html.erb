@@ -6,7 +6,7 @@
       <% end %>
     </div>
     <nav class="navigation-links">
-      <a class="link-navbar">Explore</a>
+      <%= link_to "Explore", regions_path, class: "link-navbar" %>
       <a class="link-navbar">List Venue</a>
       <div class="theme-toggle" data-controller="theme">
         <button class="theme-btn sun" data-action="theme#setDaylight" aria-label="Daylight mode">
@@ -24,7 +24,12 @@
       <a href="" class="btn btn-primary btn-gold-shimmer">
         Get Started
       </a>
-      <%= link_to "Sign In", new_user_session_path, class: "link-navbar" %>
+
+      <% if user_signed_in? %>
+        <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "link-navbar" %>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_path, class: "link-navbar" %>
+      <% end %>
 
     </nav>
 

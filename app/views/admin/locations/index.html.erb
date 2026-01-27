@@ -1,0 +1,55 @@
+<section class="admin-page-header">
+  <div>
+    <h1>Locations</h1>
+    <p class="muted"><%= @locations.count %> total</p>
+  </div>
+
+  <%= link_to "New location", new_admin_location_path, class: "admin-button primary" %>
+</section>
+
+<div class="admin-card">
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>Status</th>
+        <th class="right">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @locations.each do |location| %>
+        <tr>
+          <td>
+            <strong>
+              <%= link_to location.name, admin_location_path(location), class: "table-link" %>
+            </strong>
+          </td>
+
+          <td><%= location.city %></td>
+
+          <td>
+            <% if location.available %>
+              <span class="badge success">Available</span>
+            <% else %>
+              <span class="badge muted">Hidden</span>
+            <% end %>
+          </td>
+
+          <td class="right">
+            <%= link_to "Edit",
+                  edit_admin_location_path(location),
+                  class: "admin-button small" %>
+
+            <%= link_to "Delete",
+                  admin_location_path(location),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" },
+                  class: "admin-button small danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

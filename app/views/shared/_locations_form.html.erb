@@ -1,0 +1,77 @@
+<div class="admin-card">
+  <%= form_with model: [:admin, @location], class: "admin-form" do |f| %>
+
+    <div class="form-section">
+      <h3>Basic information</h3>
+
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-input" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, rows: 4, class: "form-textarea" %>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Location details</h3>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <%= f.label :city %>
+          <%= f.text_field :city, class: "form-input" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :location_type %>
+          <%= f.text_field :location_type, class: "form-input" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Metadata</h3>
+
+      <div class="form-group">
+        <%= f.label :tags %>
+        <%= f.text_field :tags,
+              value: @location.tags&.join(", "),
+              placeholder: "e.g. unique, modern, nature",
+              class: "form-input" %>
+        <p class="form-hint">Comma separated</p>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :amenities %>
+        <%= f.text_field :amenities,
+              value: @location.amenities&.join(", "),
+              placeholder: "Parking, Electricity, Natural light",
+              class: "form-input" %>
+        <p class="form-hint">Comma separated</p>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>Images</h3>
+
+      <div class="form-group">
+        <%= f.label :cover_image %>
+        <%= f.file_field :cover_image, class: "form-file" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :images, "Gallery images" %>
+        <%= f.file_field :images, multiple: true, class: "form-file" %>
+        <p class="form-hint">Uploading new images will replace the gallery</p>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit class: "admin-button primary" %>
+      <%= link_to "Cancel", admin_locations_path, class: "admin-button" %>
+    </div>
+
+  <% end %>
+</div>

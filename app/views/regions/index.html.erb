@@ -1,0 +1,7 @@
+<h1>Explore Regions</h1>
+
+<div class="regions-grid">
+  <% @regions.each do |region| %>
+    <%= link_to region, region_path(region.parameterize), class: "region-card" %>
+  <% end %>
+</div>

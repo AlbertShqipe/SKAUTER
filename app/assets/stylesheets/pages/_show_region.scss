@@ -1,0 +1,22 @@
+.region-hero {
+  height: 60vh;
+  background: url("/images/regions/tirana.jpg") center / cover no-repeat;
+  position: relative;
+}
+
+.region-hero .overlay {
+  background: linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.85));
+  height: 100%;
+  color: white;
+  padding: 4rem;
+}
+
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.region-show {
+  padding: 4rem 2rem;
+}

@@ -1,0 +1,63 @@
+<div class="admin-location">
+
+  <div class="admin-header">
+    <h1><%= @location.name %></h1>
+
+    <div class="admin-actions">
+      <%= link_to "Edit", edit_admin_location_path(@location), class: "btn btn-primary" %>
+      <%= link_to "Back", admin_locations_path, class: "btn btn-secondary" %>
+      <%= link_to "Delete",
+          admin_location_path(@location),
+          method: :delete,
+          data: { confirm: "Are you sure?" },
+          class: "btn btn-danger" %>
+    </div>
+  </div>
+
+  <div class="admin-card">
+    <p class="admin-description">
+      <%= @location.description %>
+    </p>
+
+    <div class="admin-grid">
+      <div><strong>City</strong><br><%= @location.city %></div>
+      <div><strong>County</strong><br><%= @location.county %></div>
+      <div><strong>Type</strong><br><%= @location.location_type %></div>
+      <div><strong>Capacity</strong><br><%= @location.capacity %></div>
+      <div><strong>Price / hour</strong><br>€<%= @location.price_per_hour %></div>
+      <div><strong>Price / day</strong><br>€<%= @location.price_per_day %></div>
+      <div>
+        <strong>Available</strong><br>
+        <span class="<%= @location.available? ? "badge-green" : "badge-red" %>">
+          <%= @location.available? ? "Yes" : "No" %>
+        </span>
+      </div>
+      <div>
+        <strong>Host</strong><br>
+        <%= @location.host_name %>
+        <% if @location.host_verified? %>
+          ✔️
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <% if @location.cover_image.present? %>
+    <div class="admin-card">
+      <h3>Cover image</h3>
+      <%= image_tag url_for(@location.cover_image), class: "admin-image" %>
+    </div>
+  <% end %>
+
+  <% if @location.images.present? %>
+    <div class="admin-card">
+      <h3>Gallery</h3>
+      <div class="admin-gallery">
+        <% @location.images.each do |img| %>
+          <%= image_tag url_for(img), class: "admin-image" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+</div>
