@@ -1,0 +1,52 @@
+.burger {
+  display: none;
+
+  @media (max-width: 760px) {
+    display: flex;
+    margin-right: 20px;
+  }
+
+  z-index: 999;
+}
+
+.menu-icon {
+  width: 30px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  float: right;
+  z-index: 1001;
+  // padding-right: 20px;
+
+}
+
+.line {
+  width: 32px;
+  height: 2px;
+  background-color: var(--text);
+  margin: 4px 0;
+  transform-origin: left;
+  transform: scaleX(1);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-icon .line2 {
+  transition: transform 1s ease;
+  transform-origin: right;
+  transition-delay: 0.5s;
+}
+
+/* 🔥 OPEN STATE → X */
+.menu-icon.open .line:first-child {
+  transform: translateY(-6px) rotate(45deg);
+}
+
+.menu-icon.open .line:last-child {
+  transform: translateY(6px) rotate(-45deg);
+}

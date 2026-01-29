@@ -1,5 +1,6 @@
 <div class="admin-card">
   <%= form_with model: [:admin, @county], local: true, class: "admin-form" do |f| %>
+
   <div class="form-section">
       <h3>County information</h3>
       <div class="form-group">
@@ -8,12 +9,18 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, required: true %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :cover_image %>
         <%= f.file_field :cover_image %>
 
         <% if @county.cover_image.attached? %>
-          <div class="preview">
-            <%= image_tag @county.cover_image.variant(resize_to_limit: [300, 200]) %>
+          <div class="preview mt-3">
+            <p>Current cover image:</p>
+            <%= image_tag url_for(@county.cover_image), size: "150x140" %>
           </div>
         <% end %>
       </div>
