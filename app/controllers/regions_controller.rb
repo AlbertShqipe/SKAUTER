@@ -5,6 +5,18 @@ class RegionsController < ApplicationController
       .where(locations: { available: true })
       .distinct
       .order(:name)
+
+    @locations = Location.where(available: true)
+
+    @markers = @locations.map do |l|
+      {
+        id: l.id,
+        name: l.name,
+        county: l.county.name,
+        lat: l.latitude,
+        lng: l.longitude
+      }
+    end
   end
 
   def show

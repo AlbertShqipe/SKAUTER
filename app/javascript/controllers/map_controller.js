@@ -1,3 +1,4 @@
+
 import { Controller } from "@hotwired/stimulus"
 import mapboxgl from "mapbox-gl"
 
@@ -26,7 +27,35 @@ export default class extends Controller {
       "bottom-right"
     )
 
+    this.markerIndex = {}
     this.addMarkers()
+  }
+
+  addMarkers() {
+    console.log("📍 Adding markers:", this.markersValue.length)
+
+    this.markersValue.forEach(marker => {
+      const popup = new mapboxgl.Popup({
+        offset: 20,
+        closeButton: false
+      }).setHTML(`
+        <div class="map-popup">
+          <h3>${marker.name}</h3>
+          <p>${marker.county}</p>
+          <a href="/locations/${marker.id}" class="map-popup-btn">View →</a>
+        </div>
+      `)
+
+      const el = document.createElement("div")
+      el.className = "map-marker"
+
+      const mapMarker = new mapboxgl.Marker(el)
+        .setLngLat([marker.lng, marker.lat])
+        .setPopup(popup)
+        .addTo(this.map)
+
+      this.markerIndex[marker.id] = { mapMarker, el }
+    })
   }
 
   toggle() {
@@ -40,25 +69,17 @@ export default class extends Controller {
     }, 350)
   }
 
-  addMarkers() {
-    console.log("📍 Adding markers:", this.markersValue.length)
-
-    this.markersValue.forEach(marker => {
-      const popup = new mapboxgl.Popup({
-        offset: 20,
-        closeButton: false
-      }).setHTML(`
-        <div class="map-popup">
-          <h3>${marker.name}</h3>
-          <p>${marker.county.name}</p>
-          <a href="/locations/${marker.id}" class="map-popup-btn">View →</a>
-        </div>
-      `)
-
-      new mapboxgl.Marker({ color: "#c9a227" })
-        .setLngLat([marker.lng, marker.lat])
-        .setPopup(popup)
-        .addTo(this.map)
+  flyTo(id, lat, lng) {
+    this.map.flyTo({
+      center: [lng, lat],
+      zoom: 12,
+      speed: 0.9
     })
+
+    Object.values(this.markerIndex).forEach(m =>
+      m.el.classList.remove("active")
+    )
+
+    this.markerIndex[id]?.el.classList.add("active")
   }
 }

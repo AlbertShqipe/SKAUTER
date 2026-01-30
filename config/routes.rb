@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   # Public read-only locations
   resources :locations, only: %i[index show]
-  resources :regions, only: %i[index show], param: :slug
+  resources :regions,
+          path: "explore",
+          only: %i[index show],
+          param: :slug
 
   # Admin-only full CRUD
   namespace :admin do
