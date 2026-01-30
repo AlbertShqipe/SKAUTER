@@ -35,9 +35,13 @@
       gap: 1.5rem;
 
       @media (max-width: 760px) {
-      display: none;
+        display: none;
+      }
     }
-    }
+  }
+
+  .line {
+    background-color: var(--text);
   }
 }
 

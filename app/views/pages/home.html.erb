@@ -120,3 +120,36 @@
     </div>
   </div>
 </section>
+
+<div
+  data-controller="map"
+  data-map-api-key-value="<%= @mapbox_api_key %>"
+  data-map-markers-value="<%= json_escape(@markers.to_json) %>"
+  data-map-open-value="false">
+
+  <button
+    class="map-toggle-btn"
+    data-action="click->map#toggle"
+    aria-label="Toggle map">
+    📍
+  </button>
+
+  <div class="map-panel" data-map-target="panel">
+    <!-- HEADER -->
+    <div class="map-header">
+      <div>
+        <h3>Explore Albania</h3>
+        <span><%= @locations.count %> locations</span>
+      </div>
+
+      <button
+        class="map-close-btn"
+        data-action="click->map#toggle"
+        aria-label="Close map">
+        ✕
+      </button>
+    </div>
+    <div class="map" data-map-target="container"></div>
+  </div>
+
+</div>

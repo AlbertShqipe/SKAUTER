@@ -1,6 +1,53 @@
 .admin-navbar {
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 1000;
   background: linear-gradient(90deg, #111, #1a1a1a);
   border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  position: fixed;
+  transition:
+  background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+  color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+  box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+  backdrop-filter 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+
+  .navbar-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 700;;
+      color: white;
+    }
+
+    .navigation-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      color: white;
+
+      @media (max-width: 760px) {
+        display: none;
+      }
+
+      .link-navbar {
+        color: white;
+      }
+    }
+
+    .line {
+      background-color: white;
+    }
+  }
 }
 
 .admin-badge {
