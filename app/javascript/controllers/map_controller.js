@@ -7,7 +7,9 @@ export default class extends Controller {
   static values = {
     apiKey: String,
     markers: Array,
-    open: Boolean
+    counties: Array,
+    open: Boolean,
+    selectedCounty: Object
   }
 
   connect() {
@@ -29,6 +31,10 @@ export default class extends Controller {
 
     this.markerIndex = {}
     this.addMarkers()
+
+    if (this.hasSelectedCountyValue) {
+      this.zoomToCounty(this.selectedCountyValue)
+    }
   }
 
   addMarkers() {
@@ -58,6 +64,22 @@ export default class extends Controller {
     })
   }
 
+  addCountyMarkers() {
+    this.countiesValue.forEach(county => {
+      const el = document.createElement("div")
+      el.className = "county-marker"
+      el.innerText = county.name
+
+      el.addEventListener("click", () => {
+        this.zoomToCounty(county)
+      })
+
+      new mapboxgl.Marker(el)
+        .setLngLat([county.lng, county.lat])
+        .addTo(this.map)
+    })
+  }
+
   toggle() {
     console.log("🟢 Toggle clicked")
 
@@ -81,5 +103,13 @@ export default class extends Controller {
     )
 
     this.markerIndex[id]?.el.classList.add("active")
+  }
+
+  zoomToCounty(county) {
+    this.map.flyTo({
+      center: [county.lng, county.lat],
+      zoom: 9,       // ← perfect county-level zoom
+      speed: 0.8
+    })
   }
 }

@@ -8,6 +8,8 @@ class County < ApplicationRecord
 
   before_validation :set_slug, on: %i[create update]
 
+  validates :latitude, :longitude, presence: true
+
   # ⛔ Prevent deletion at model level
   before_destroy :prevent_destroy
 

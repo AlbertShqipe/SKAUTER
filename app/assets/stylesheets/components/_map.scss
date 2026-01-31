@@ -80,27 +80,36 @@
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
-
   width: 56px;
   height: 56px;
   border-radius: 50%;
-
   background: #9f1239;
   color: #fff;
   border: none;
-
   font-size: 1.2rem;
   cursor: pointer;
-
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
   z-index: 950;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   transition: transform 0.2s ease, background 0.2s ease;
-}
 
-.map-toggle-btn:hover {
-  transform: scale(1.05);
-  background-color: rgb(211, 175, 60);
+  svg {
+    width: 24px;
+    height: 24px;
+    stroke: white;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: rgb(211, 175, 60);
+
+    svg {
+      stroke: #9f1239;
+    }
+  }
 }
 
 .map-popup {
@@ -148,4 +157,14 @@
 .map-marker.active {
   transform: scale(1.5);
   background: #9f1239;
+}
+
+.county-marker {
+  background: rgba(15, 42, 91, 0.9);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
 }

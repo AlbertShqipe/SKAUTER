@@ -20,7 +20,7 @@
       <h2>Available Locations</h2>
       <span><%= pluralize(@locations.count, "location") %> in <%= @region %></span>
 
-      <%= link_to "View on Map", "#", class: "map-btn" %>
+      <%= link_to "View on Map", regions_path(county: @county.slug), class: "map-btn" %>
     </div>
 
     <div class="locations-grid">
