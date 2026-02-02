@@ -1,2 +1,112 @@
-<h1><%= @location.name %></h1>
-<p><%= @location.description %></p>
+<div class="location-show">
+
+  <!-- Back link -->
+  <div class="location-nav">
+    <%= link_to "← Back to Explore", regions_path, class: "back-link" %>
+  </div>
+
+  <!-- Main grid -->
+  <div class="location-grid">
+
+    <!-- LEFT: Gallery + content -->
+    <div class="location-main">
+
+
+      <% if @location.cover_image.present? %>
+        <div class="location-hero">
+          <%= image_tag @location.cover_image, alt: @location.name %>
+        </div>
+      <% else %>
+          <%= image_tag "default.jpg", alt: "Default image" %>
+      <% end %>
+
+
+      <!-- Hero image -->
+
+      <!-- Title & meta -->
+      <div class="location-header">
+        <h1><%= @location.name %></h1>
+
+        <p class="location-meta">
+          📍 <%= @location.address %>
+        </p>
+
+        <div class="location-tags">
+          <% @location.tags.each do |tag| %>
+            <span class="tag"><%= tag %></span>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- About -->
+      <section class="location-section">
+        <h2>About this location</h2>
+        <p><%= @location.description %></p>
+      </section>
+
+      <!-- Amenities -->
+      <section class="location-section">
+        <h2>Amenities</h2>
+        <ul class="amenities-list">
+          <% @location.amenities.each do |amenity| %>
+            <li>✓ <%= amenity %></li>
+          <% end %>
+        </ul>
+      </section>
+
+    </div>
+
+    <!-- RIGHT: Booking card -->
+    <aside class="booking-card">
+
+      <div class="price">
+        <strong>$<%= @location.price_per_hour %></strong>
+        <span>/ hour</span>
+      </div>
+
+      <div class="pricing-toggle">
+        <button class="active">Hourly</button>
+        <button>Daily</button>
+      </div>
+
+      <div class="booking-info">
+        <p>👥 Up to <%= @location.capacity %> people</p>
+        <p class="available">✔ Available for booking</p>
+      </div>
+
+      <%#
+      <%= button_to "Request Booking",
+            new_location_booking_path(@location),
+            method: :get,
+            class: "btn-primary" %>
+
+      <%#
+      <p class="booking-note">
+        You won't be charged yet. Host will confirm availability.
+      </p>
+      %>
+
+    </aside>
+
+  </div>
+  <section class="location-section host-section">
+  <h2>Hosted by</h2>
+
+  <div class="host-card">
+    <div class="host-avatar">
+      <span>S</span>
+    </div>
+
+    <div class="host-info">
+      <div class="host-name">
+        <strong>Skauter Team</strong>
+        <span class="verified-badge">✔ Verified</span>
+      </div>
+
+      <div class="host-rating">
+        ⭐ 4.9 rating
+      </div>
+    </div>
+  </div>
+</section>
+</div>
