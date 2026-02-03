@@ -24,8 +24,8 @@
       <div><strong>County</strong><br><%= @location.county.name %></div>
       <div><strong>Type</strong><br><%= @location.location_type %></div>
       <div><strong>Capacity</strong><br><%= @location.capacity %></div>
-      <div><strong>Price / hour</strong><br>€<%= @location.price_per_hour %></div>
-      <div><strong>Price / day</strong><br>€<%= @location.price_per_day %></div>
+      <div><strong>Price / hour</strong><br><%= @location.price_per_hour %></div>
+      <div><strong>Price / day</strong><br>ALL<%= @location.price_per_day %></div>
       <div>
         <strong>Available</strong><br>
         <span class="<%= @location.available? ? "badge-green" : "badge-red" %>">
