@@ -18,7 +18,7 @@ class Admin::CountiesController < Admin::BaseController
     if @county.save
       redirect_to admin_counties_path, notice: "County created successfully"
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -28,7 +28,7 @@ class Admin::CountiesController < Admin::BaseController
     if @county.update(county_params)
       redirect_to admin_counties_path, notice: "County updated successfully"
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 

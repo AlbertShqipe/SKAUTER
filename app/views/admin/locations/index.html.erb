@@ -41,11 +41,9 @@
                   edit_admin_location_path(location),
                   class: "admin-button small" %>
 
-            <%= link_to "Delete",
-                  admin_location_path(location),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" },
-                  class: "admin-button small danger" %>
+            <%= link_to "See",
+              admin_location_path(location),
+              class: "admin-button small" %>
           </td>
         </tr>
       <% end %>

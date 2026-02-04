@@ -7,32 +7,145 @@
         <p>Book Albania's most cinematic filming locations</p>
       </div>
       <div class="hero-search">
-        <div class="search-bar">
+        <%= form_with url: regions_path, method: :get, class: "search-bar", data: { controller: "hero-search" } do %>
 
-          <div class="search-field">
+          <!-- ACTIVITY -->
+          <div class="search-field"
+            data-action="click->hero-search#toggleActivity">
+
             <label class="search-label">What are you planning?</label>
+
             <div class="search-value">
               <i data-lucide="film"></i>
-              <span>Film Production</span>
+              <span data-hero-search-target="activityLabel">
+                <%= params[:activity].presence || "Film Production" %>
+              </span>
+            </div>
+
+            <div class="search-dropdown"
+                data-hero-search-target="activityDropdown"
+                hidden>
+
+              <div class="dropdown-title">Select Activity Type</div>
+
+              <% [
+                "Film Production",
+                "Photo Shoot",
+                "Event",
+                "Wedding",
+                "Music Video",
+                "Commercial",
+                "Documentary",
+                "Meeting"
+              ].each do |activity| %>
+
+                <button type="button"
+                        class="dropdown-item"
+                        data-value="<%= activity %>"
+                        data-action="click->hero-search#selectActivity">
+                  <span><%= activity %></span>
+                  <span class="check"
+                        data-hero-search-target="activityCheck"
+                        data-check-for="<%= activity %>"
+                        hidden>✓</span>
+                </button>
+
+              <% end %>
             </div>
           </div>
 
-          <div class="search-field">
+          <!-- WHERE -->
+          <div class="search-field"
+              data-action="click->hero-search#toggleLocationType">
+
             <label class="search-label">Where?</label>
+
             <div class="search-value">
               <i data-lucide="building-2"></i>
-              <span>Villas &amp; Estates</span>
+              <span data-hero-search-target="locationTypeLabel">
+                <%= params[:location_type].presence || "Villas & Estates" %>
+              </span>
+            </div>
+
+            <div class="search-dropdown"
+                data-hero-search-target="locationTypeDropdown"
+                hidden>
+
+              <div class="dropdown-title">Select Location Type</div>
+
+              <% Location.dynamic_location_type_groups.each do |group, types| %>
+                <div class="dropdown-group">
+                  <div class="dropdown-group-title"><%= group %></div>
+
+                  <% types.each do |type| %>
+                    <% display = type.to_s.titleize %>
+
+                    <button type="button"
+                            class="dropdown-item"
+                            data-value="<%= display %>"
+                            data-action="click->hero-search#selectLocationType">
+                      <span><%= display %></span>
+
+                      <span class="check"
+                            data-hero-search-target="locationTypeCheck"
+                            data-check-for="<%= display %>"
+                            hidden>✓</span>
+                    </button>
+                  <% end %>
+                </div>
+              <% end %>
+
             </div>
           </div>
 
-          <div class="search-field">
+          <!-- WHEN -->
+          <div class="search-field"
+              data-action="click->hero-search#toggleDate">
+
             <label class="search-label">When?</label>
+
             <div class="search-value">
               <i data-lucide="calendar"></i>
-              <span>Anytime</span>
+              <span data-hero-search-target="dateLabel">
+                <%= params[:date].presence || "Anytime" %>
+              </span>
+            </div>
+
+            <div class="search-dropdown"
+                data-hero-search-target="dateDropdown"
+                hidden>
+
+              <div class="dropdown-title">When are you planning?</div>
+
+              <button type="button"
+                      class="dropdown-item"
+                      data-value=""
+                      data-action="click->hero-search#selectDate">
+                <span>Anytime</span>
+              </button>
+
+              <div class="dropdown-calendar">
+                <input type="date"
+                      class="date-input"
+                      data-action="change->hero-search#selectDate"
+                      data-hero-search-target="dateInputField">
+              </div>
+
             </div>
           </div>
 
+          <!-- Hidden inputs -->
+          <%= hidden_field_tag :activity,
+                params[:activity].presence || "Film Production",
+                data: { hero_search_target: "activityInput" } %>
+          <%= hidden_field_tag :location_type,
+              params[:location_type],
+              data: { hero_search_target: "locationTypeInput" } %>
+          <%= hidden_field_tag :date,
+              params[:date],
+              data: { hero_search_target: "dateInput" } %>
+
+          <!-- SUBMIT -->
           <div class="search-action">
             <button type="submit" class="search-button">
               <i data-lucide="search"></i>
@@ -40,7 +153,7 @@
             </button>
           </div>
 
-        </div>
+        <% end %>
       </div>
     </div>
   </div>

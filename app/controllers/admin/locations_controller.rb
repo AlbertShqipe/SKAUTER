@@ -20,7 +20,7 @@ class Admin::LocationsController < Admin::BaseController
       attach_images
       redirect_to admin_locations_path, notice: "Location created"
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -29,7 +29,7 @@ class Admin::LocationsController < Admin::BaseController
       attach_images
       redirect_to admin_locations_path, notice: "Location updated"
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
@@ -62,6 +62,7 @@ class Admin::LocationsController < Admin::BaseController
       :host_name,
       :host_verified,
       :cover_image,
+      :county_id,
       tags: [],
       amenities: [],
       images: []

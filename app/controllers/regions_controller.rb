@@ -1,8 +1,30 @@
 class RegionsController < ApplicationController
   def index
+    # --- FILTER PARAMS ---
+    activity      = params[:activity]
+    location_type = params[:location_type]
+    date          = params[:date] # placeholder for later
+
+    # --- BASE LOCATIONS SCOPE ---
+    locations_scope = Location.where(available: true)
+
+    # # Filter by activity (using tags array)
+    # if activity.present?
+    #   locations_scope = locations_scope.where("? = ANY(tags)", activity)
+    # end
+
+    # Filter by location type
+    if params[:location_type].present?
+      locations_scope = locations_scope.where(
+        "LOWER(location_type) = ?",
+        params[:location_type].downcase
+      )
+    end
+
+    # --- COUNTIES (ONLY THOSE WITH FILTERED LOCATIONS) ---
     @counties = County
       .joins(:locations)
-      .where(locations: { available: true })
+      .merge(locations_scope)
       .distinct
       .order(:name)
 
@@ -15,7 +37,8 @@ class RegionsController < ApplicationController
       }
     end
 
-    @locations = Location.where(available: true)
+    # --- LOCATIONS (FILTERED) ---
+    @locations = locations_scope.includes(:county)
 
     @markers = @locations.map do |l|
       {
@@ -27,6 +50,7 @@ class RegionsController < ApplicationController
       }
     end
 
+    # --- SELECTED COUNTY (OPTIONAL ZOOM) ---
     @selected_county = County.find_by(slug: params[:county]) if params[:county].present?
   end
 

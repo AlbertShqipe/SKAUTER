@@ -14,7 +14,6 @@
   color: white;
   text-align: center;
   position: relative;
-  overflow: hidden;
 
   @media (max-width: 760px) {
     height: 100dvh;
@@ -72,9 +71,10 @@
       background: white;
       border-radius: 999px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-      overflow: hidden;
+      overflow: visible;
       width: 80%;
       max-width: 1200px;
+      z-index: 9999;
 
       @media (max-width: 768px) {
         border-radius: 0.75rem;
@@ -89,7 +89,7 @@
         background: white;
         border-radius: 999px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        overflow: hidden;
+        overflow: visible;
 
         @media (max-width: 768px) {
           flex-direction: column;
@@ -420,4 +420,70 @@ html.golden-hour .search-value {
       }
     }
   }
+}
+
+.search-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 280px;
+  background: var(--background);
+  border-radius: 12px;
+  color: var(--foreground);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  padding: 8px;
+  z-index: 2000;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.dropdown-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  padding: 8px 12px;
+}
+
+.dropdown-item {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dropdown-calendar {
+  padding: 8px 12px;
+}
+
+.date-input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.dropdown-item:hover {
+  background: #f9fafb;
+}
+
+.check {
+  color: #d4a017; /* gold-ish */
+  font-weight: 700;
+}
+
+.dropdown-group {
+  padding: 6px 0;
+}
+
+.dropdown-group-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  padding: 6px 12px;
 }

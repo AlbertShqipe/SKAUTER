@@ -3,14 +3,14 @@
   <div class="admin-header">
     <h1><%= @location.name %></h1>
 
-    <div class="admin-actions">
-      <%= link_to "Edit", edit_admin_location_path(@location), class: "btn btn-primary" %>
-      <%= link_to "Back", admin_locations_path, class: "btn btn-secondary" %>
-      <%= link_to "Delete",
-          admin_location_path(@location),
-          method: :delete,
-          data: { confirm: "Are you sure?" },
-          class: "btn btn-danger" %>
+    <div class="admin-actions align-center gap-2 ">
+      <%= link_to "Back", admin_locations_path, class: "link-navbar mx-5" %>
+      <%= link_to "Edit", edit_admin_location_path(@location), class: "btn btn-secondary" %>
+      <%= button_to "Delete",
+      admin_location_path(@location),
+      method: :delete,
+      data: { turbo_confirm: "Are you sure?" },
+      class: "btn btn-danger" %>
     </div>
   </div>
 
@@ -24,8 +24,8 @@
       <div><strong>County</strong><br><%= @location.county.name %></div>
       <div><strong>Type</strong><br><%= @location.location_type %></div>
       <div><strong>Capacity</strong><br><%= @location.capacity %></div>
-      <div><strong>Price / hour</strong><br><%= @location.price_per_hour %></div>
-      <div><strong>Price / day</strong><br>ALL<%= @location.price_per_day %></div>
+      <div><strong>Price / hour</strong><br>ALL <%= @location.price_per_hour %></div>
+      <div><strong>Price / day</strong><br>ALL <%= @location.price_per_day %></div>
       <div>
         <strong>Available</strong><br>
         <span class="<%= @location.available? ? "badge-green" : "badge-red" %>">
