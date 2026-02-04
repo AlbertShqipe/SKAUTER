@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     @counties = County
       .left_joins(:locations)
-      .where(locations: { available: true })
+      # .where(locations: { available: true })
       .group("counties.id")
       .select(
         "counties.*,
