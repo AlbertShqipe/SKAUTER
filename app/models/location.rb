@@ -14,6 +14,8 @@ class Location < ApplicationRecord
   validates :price_per_day, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
   validates :capacity, numericality: { greater_than: 0 }, allow_nil: true
 
+  attribute :available, :boolean, default: true
+
   # Scopes
   scope :available, -> { where(available: true) }
   scope :verified_hosts, -> { where(host_verified: true) }

@@ -41,11 +41,17 @@
       </div>
     </div>
   </div>
-
+  <% images = @location.images.map { |img| url_for(img) } %>
   <% if @location.cover_image.present? %>
     <div class="admin-card">
       <h3>Cover image</h3>
-      <%= image_tag url_for(@location.cover_image), class: "admin-image" %>
+      <%= image_tag @location.cover_image,
+        class: "clickable-image admin-image",
+        data: {
+          action: "click->lightbox#open",
+          lightbox_images: [url_for(@location.cover_image)].to_json,
+          lightbox_index: 0
+        } %>
     </div>
   <% end %>
 
@@ -53,8 +59,14 @@
     <div class="admin-card">
       <h3>Gallery</h3>
       <div class="admin-gallery">
-        <% @location.images.each do |img| %>
-          <%= image_tag url_for(img), class: "admin-image" %>
+        <% @location.images.each_with_index do |image, index| %>
+          <%= image_tag image,
+            class: "clickable-image admin-image",
+            data: {
+              action: "click->lightbox#open",
+              lightbox_images: images.to_json,
+              lightbox_index: index
+            } %>
         <% end %>
       </div>
     </div>

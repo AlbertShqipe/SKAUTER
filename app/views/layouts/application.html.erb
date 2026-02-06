@@ -37,7 +37,7 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet"/>
   </head>
 
-  <body data-controller="theme slideshow">
+  <body data-controller="theme slideshow lightbox">
     <div class="status-bar-fill"></div>
     <div class="slideshow" data-slideshow-target="panel">
 
@@ -65,5 +65,21 @@
     <%= render "shared/flashes" %>
 
     <%= yield %>
+    <div id="lightbox"
+      data-lightbox-target="overlay"
+      hidden>
+
+      <button class="lightbox-close"
+              data-action="click->lightbox#close">×</button>
+
+      <button class="lightbox-arrow left"
+              data-action="click->lightbox#prev">‹</button>
+
+      <div class="lightbox-track"
+          data-lightbox-target="track"></div>
+
+      <button class="lightbox-arrow right"
+              data-action="click->lightbox#next">›</button>
+    </div>
   </body>
 </html>

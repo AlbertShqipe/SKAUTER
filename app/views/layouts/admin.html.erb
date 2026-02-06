@@ -5,9 +5,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application" %>
+    <%= javascript_importmap_tags %>
   </head>
 
-  <body class="admin-layout">
+  <body class="admin-layout" data-controller="lightbox">
     <header class="admin-header">
       <div class="admin-header-left">
         <strong class="admin-logo">Skauter Admin</strong>
@@ -29,6 +30,22 @@
 
     <main class="admin-container">
       <%= yield %>
+      <div id="lightbox"
+          data-lightbox-target="overlay"
+          hidden>
+
+        <button class="lightbox-close"
+                data-action="click->lightbox#close">×</button>
+
+        <button class="lightbox-arrow left"
+                data-action="click->lightbox#prev">‹</button>
+
+        <div class="lightbox-track"
+            data-lightbox-target="track"></div>
+
+        <button class="lightbox-arrow right"
+                data-action="click->lightbox#next">›</button>
+      </div>
     </main>
   </body>
 </html>
