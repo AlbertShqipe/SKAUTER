@@ -9,10 +9,12 @@ class RegionsController < ApplicationController
     # --- BASE LOCATIONS SCOPE ---
     locations_scope = Location.where(available: true)
 
-    # # Filter by activity (using tags array)
-    # if activity.present?
-    #   locations_scope = locations_scope.where("? = ANY(tags)", activity)
-    # end
+    if params[:activity].present?
+      locations_scope = locations_scope.where(
+        "? = ANY(activity_types)",
+        params[:activity]
+      )
+    end
 
     # Filter by location type
     if params[:location_type].present?

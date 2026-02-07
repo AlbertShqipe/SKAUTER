@@ -13,7 +13,7 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("✅ Map controller connected")
+    // console.log("✅ Map controller connected")
 
     mapboxgl.accessToken = this.apiKeyValue
 
@@ -81,7 +81,7 @@ export default class extends Controller {
   }
 
   toggle() {
-    console.log("🟢 Toggle clicked")
+    // console.log("🟢 Toggle clicked")
 
     this.openValue = !this.openValue
     this.panelTarget.classList.toggle("is-open", this.openValue)

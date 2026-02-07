@@ -52,6 +52,12 @@
             <li>✓ <%= amenity %></li>
           <% end %>
         </ul>
+
+        <div class="location-activities">
+          <% @location.activity_types.first(3).each do |activity| %>
+            <span class="activity-pill"><%= activity %></span>
+          <% end %>
+        </div>
       </section>
 
     </div>
@@ -60,7 +66,7 @@
     <aside class="booking-card">
 
       <div class="price">
-        <strong>$<%= @location.price_per_hour %></strong>
+        <strong>ALL <%= @location.price_per_hour %></strong>
         <span>/ hour</span>
       </div>
 

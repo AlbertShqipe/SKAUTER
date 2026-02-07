@@ -65,7 +65,8 @@ class Admin::LocationsController < Admin::BaseController
       :county_id,
       tags: [],
       amenities: [],
-      images: []
+      images: [],
+      activity_types: []
     )
   end
 
@@ -91,7 +92,7 @@ class Admin::LocationsController < Admin::BaseController
   end
 
   def normalize_arrays
-    %i[tags amenities].each do |field|
+    %i[tags amenities activity_types].each do |field|
       if params[:location][field].is_a?(String)
         params[:location][field] = params[:location][field]
           .split(",")

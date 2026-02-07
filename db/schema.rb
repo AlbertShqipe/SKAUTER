@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_02_07_132640) do
+ActiveRecord::Schema[7.1].define(version: 2026_02_07_141949) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -84,6 +84,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_07_132640) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "county_id"
+    t.string "activity_types", default: [], array: true
+    t.index ["activity_types"], name: "index_locations_on_activity_types", using: :gin
     t.index ["amenities"], name: "index_locations_on_amenities", using: :gin
     t.index ["city"], name: "index_locations_on_city"
     t.index ["county_id"], name: "index_locations_on_county_id"

@@ -69,6 +69,29 @@ class Location < ApplicationRecord
     "Industrial & Modern" => /industrial|sports|factory/i
   }.freeze
 
+  LOCATION_TYPES = [
+    "Villas & Estates",
+    "Hotels & Guesthouses",
+    "Historic & Cultural",
+    "Urban & Public Spaces",
+    "Nature & Outdoor",
+    "Industrial & Modern"
+  ].freeze
+
+
+
+
+  ACTIVITY_TYPES = [
+    "Film Production",
+    "Photo Shoot",
+    "Event",
+    "Wedding",
+    "Music Video",
+    "Commercial",
+    "Documentary",
+    "Meeting"
+  ].freeze
+
   after_initialize do
     self.tags ||= []
     self.amenities ||= []

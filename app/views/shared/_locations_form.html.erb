@@ -18,27 +18,34 @@
     <div class="form-section">
       <h3>Location details</h3>
 
-      <div class="form-grid">
-        <div class="form-group">
-          <%= f.label :city %>
-          <%= f.text_field :city, class: "form-input", required: true %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :location_type %>
-          <%= f.text_field :location_type, class: "form-input", required: true %>
-        </div>
-      </div>
-
       <div class="form-group">
-        <%= f.label :county_id, "County" %>
-        <%= f.collection_select :county_id,
-              County.order(:name),
-              :id,
-              :name,
-              { prompt: "Select a county" },
-              class: "form-input", required: true %>
+        <%= f.label :city %>
+        <%= f.text_field :city, class: "form-input", required: true %>
       </div>
+
+      <div class="form-grid">
+
+        <div class="form-group">
+          <%= f.label :location_type, "Location Type" %>
+          <%= f.collection_select :location_type,
+                Location::LOCATION_TYPES,
+                :to_s,
+                :to_s,
+                { prompt: "Select a location type" },
+                class: "form-input", required: true %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :county_id, "County" %>
+          <%= f.collection_select :county_id,
+                County.order(:name),
+                :id,
+                :name,
+                { prompt: "Select a county" },
+                class: "form-input", required: true %>
+        </div>
+      </div>
+
     </div>
 
     <div class="form-section">
@@ -101,6 +108,25 @@
                         @location.tags.include?(tag) %>
 
                   <span><%= tag.titleize %></span>
+                </label>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :activity_types, "Activity types" %>
+        <div class="tags-grid">
+          <% Location::ACTIVITY_TYPES.each_slice(4) do |group| %>
+            <div class="tags-row">
+              <% group.each do |activity| %>
+                <label class="checkbox-item">
+                  <%= check_box_tag "location[activity_types][]",
+                        activity,
+                        @location.activity_types.include?(activity) %>
+
+                  <span><%= activity %></span>
                 </label>
               <% end %>
             </div>
