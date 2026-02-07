@@ -1,0 +1,17 @@
+<%= turbo_frame_tag "favorite_location_#{location.id}" do %>
+
+  <% if user_signed_in? && current_user.favorite_locations.exists?(location.id) %>
+    <%= button_to location_favorite_path(location),
+          method: :delete,
+          class: "favorite-btn" do %>
+      ❤️
+    <% end %>
+  <% else %>
+    <%= button_to location_favorite_path(location),
+          method: :post,
+          class: "favorite-btn" do %>
+      🤍
+    <% end %>
+  <% end %>
+
+<% end %>

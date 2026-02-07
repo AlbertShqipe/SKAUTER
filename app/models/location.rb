@@ -4,6 +4,9 @@ class Location < ApplicationRecord
   has_one_attached :cover_image
   has_many_attached :images
 
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_by, through: :favorites, source: :user
+
   # Validations
   validates :name, presence: true
   validates :city, presence: true

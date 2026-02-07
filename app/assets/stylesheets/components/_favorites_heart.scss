@@ -1,0 +1,25 @@
+.favorite-heart {
+  background: white;
+  border-radius: 50%;
+  border: none;
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.favorite-heart:hover {
+  transform: scale(1.1);
+}
+
+.favorite-heart.active {
+  color: #e11d48;
+}
+
+.favorite-btn {
+  transition: transform 0.15s ease;
+}
+.favorite-btn:active {
+  transform: scale(1.2);
+}

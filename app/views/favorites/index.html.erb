@@ -1,0 +1,37 @@
+<div class="explore-layout">
+  <!-- LEFT: LIST -->
+  <aside class="explore-list">
+    <h1>My Favorites</h1>
+
+    <% if @locations.any? %>
+      <p><%= @locations.count %> saved locations</p>
+
+      <div class="location-cards">
+        <% @locations.each do |location| %>
+          <%= render "locations/card", location: location %>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="empty-state">
+        You haven’t saved any locations yet.
+      </p>
+    <% end %>
+  </aside>
+
+  <!-- RIGHT: MAP -->
+  <section
+    class="explore-map"
+    data-controller="map"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+    data-map-markers-value="<%= json_escape(@markers.to_json) %>"
+    data-map-counties-value="<%= json_escape(@county_markers.to_json) %>"
+    data-map-target="container"
+    <% if @selected_county %>
+      data-map-selected-county-value="<%= json_escape({
+        lat: @selected_county.latitude,
+        lng: @selected_county.longitude
+      }.to_json) %>"
+    <% end %>>
+
+  </section>
+</div>

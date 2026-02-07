@@ -23,9 +23,7 @@
               <%= location.county.name %>
             </span>
 
-            <button class="favorite-btn" aria-label="Save location">
-              ♥
-            </button>
+            <%= render "favorites/heart", location: location %>
           </div>
 
           <!-- CONTENT -->

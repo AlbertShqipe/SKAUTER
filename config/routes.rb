@@ -15,4 +15,11 @@ Rails.application.routes.draw do
     root to: "locations#index"
     resources :counties
   end
+
+  # User favorites
+  resources :locations, only: [] do
+    resource :favorite, only: [:create, :destroy]
+  end
+
+  get "/favorites", to: "favorites#index", as: :favorites
 end

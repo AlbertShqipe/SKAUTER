@@ -28,6 +28,11 @@
         <a class="link-navbar">List Venue</a>
       <% end %>
 
+
+      <% if user_signed_in? && current_user.favorite_locations.any? %>
+        <%= link_to "My Favorites", favorites_path, class: "link-navbar" %>
+      <% end %>
+
       <a href="" class="btn btn-navbar btn-gold-shimmer">
         Get Started
       </a>
