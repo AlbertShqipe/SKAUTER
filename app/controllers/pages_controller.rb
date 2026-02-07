@@ -29,5 +29,14 @@ class PagesController < ApplicationController
       }
     end
 
+    @location_type_counts = {}
+
+    Location::LOCATION_TYPE_RULES.each do |label, regex|
+      @location_type_counts[label] =
+        Location.where("location_type ILIKE ANY (ARRAY[?])",
+          Location.pluck(:location_type)
+            .select { |t| t&.match?(regex) }
+        ).count
+    end
   end
 end

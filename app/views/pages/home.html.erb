@@ -233,6 +233,30 @@
     </div>
   </div>
 </section>
+<section class="explore-by-type">
+  <div class="container">
+    <header class="section-header">
+      <h2>Explore by Type</h2>
+      <p>Find the perfect location for your production needs</p>
+    </header>
+
+    <div class="type-grid">
+      <% @location_type_counts.each do |label, count| %>
+        <%= link_to regions_path(type: label), class: "type-card" do %>
+
+          <div class="type-image"
+              style="background-image: url(<%= asset_path(Location::LOCATION_TYPE_IMAGES[label]) %>)">
+            <div class="overlay">
+              <h3><%= label %></h3>
+              <span><%= pluralize(count, "location") %></span>
+            </div>
+          </div>
+
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>
 
 <div
   data-controller="map"

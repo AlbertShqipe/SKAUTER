@@ -78,6 +78,25 @@ class Location < ApplicationRecord
     "Industrial & Modern"
   ].freeze
 
+  LOCATION_TYPE_IMAGES = {
+    "Villas & Estates" =>
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+
+    "Hotels & Guesthouses" =>
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+
+    "Historic & Cultural" =>
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Apollonia%2C_Albania_%28by_Pudelek%29_-_Monument_of_Agonothetes.JPG/500px-Apollonia%2C_Albania_%28by_Pudelek%29_-_Monument_of_Agonothetes.JPG",
+
+    "Urban & Public Spaces" =>
+      "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+
+    "Nature & Outdoor" =>
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+
+    "Industrial & Modern" =>
+      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+  }.freeze
 
 
 

@@ -24,6 +24,15 @@ class RegionsController < ApplicationController
       )
     end
 
+    # Filter by location type (group)
+    if params[:type].present?
+      rule = Location::LOCATION_TYPE_RULES[params[:type]]
+
+      if rule
+        locations_scope = locations_scope.where("location_type ~* ?", rule.source)
+      end
+    end
+
     # --- COUNTIES (ONLY THOSE WITH FILTERED LOCATIONS) ---
     @counties = County
       .joins(:locations)
