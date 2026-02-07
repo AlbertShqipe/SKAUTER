@@ -47,7 +47,7 @@ export default class extends Controller {
       }).setHTML(`
         <div class="map-popup">
           <h3>${marker.name}</h3>
-          <p>${marker.county}</p>
+          <p>${marker.county.name}</p>
           <a href="/locations/${marker.id}" class="map-popup-btn">View →</a>
         </div>
       `)
