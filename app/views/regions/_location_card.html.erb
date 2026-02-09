@@ -1,0 +1,58 @@
+<div
+  class="location-card"
+  data-action="mouseenter->explore-map#hover"
+  data-location-id="<%= location.id %>"
+  data-lat="<%= location.latitude %>"
+  data-lng="<%= location.longitude %>">
+
+  <!-- IMAGE -->
+  <div class="location-card-image">
+    <% if location.cover_image.attached? %>
+      <%= image_tag location.cover_image, alt: location.name %>
+    <% end %>
+
+    <span class="location-badge">
+      <%= location.county.name %>
+    </span>
+
+    <%= render "favorites/heart", location: location %>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="location-card-body">
+    <h3><%= location.name %></h3>
+
+    <p class="location-address">
+      <span class="icon">📍</span>
+      <%= location.address %>
+    </p>
+
+    <p class="location-description">
+      <%= truncate(location.description, length: 140) %>
+    </p>
+
+    <div class="location-meta">
+      <span>
+        👥 Up to <%= location.capacity %> people
+      </span>
+
+      <% if location.price_per_hour.present? %>
+        <span class="location-price">
+          ALL <%= location.price_per_hour %>
+          <small>per hour</small>
+        </span>
+      <% end %>
+    </div>
+
+    <%= link_to "View Details",
+          location_path(location),
+          class: "location-cta",
+          data: { turbo_frame: "_top" } %>
+
+    <div class="location-tags">
+      <% location.tags.first(3).each do |tag| %>
+        <span class="tag"><%= tag %></span>
+      <% end %>
+    </div>
+  </div>
+</div>

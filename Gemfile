@@ -76,3 +76,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# Use Active Record's PostgreSQL-specific features [https://guides.rubyonrails.org/active_record_postgresql.html]
+gem "pg_search"

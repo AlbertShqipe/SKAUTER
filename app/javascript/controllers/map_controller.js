@@ -1,4 +1,3 @@
-
 import { Controller } from "@hotwired/stimulus"
 import mapboxgl from "mapbox-gl"
 
@@ -21,7 +20,7 @@ export default class extends Controller {
       container: this.containerTarget,
       style: "mapbox://styles/albertnikolli/cml0tspwm006m01qxbqri7rqs",
       center: [19.8187, 41.3275],
-      zoom: 6
+      zoom: 7
     })
 
     this.map.addControl(

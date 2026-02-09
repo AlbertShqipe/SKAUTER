@@ -1,0 +1,17 @@
+<turbo-stream target="locations_list" action="replace">
+  <template>
+    <%= render partial: "location_card",
+          collection: @locations,
+          as: :location %>
+  </template>
+</turbo-stream>
+
+<turbo-stream action="dispatch" name="map:update">
+  <template>
+    <%= {
+      locations: @locations.map { |l|
+        { id: l.id, lat: l.latitude, lng: l.longitude }
+      }
+    }.to_json %>
+  </template>
+</turbo-stream>

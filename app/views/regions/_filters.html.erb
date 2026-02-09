@@ -1,0 +1,57 @@
+<div class="filters" data-controller="filters">
+
+  <div
+    class="filters-toggle"
+    data-action="click->filters#toggle">
+    <i data-lucide="sliders-horizontal"></i>
+    Filters
+  </div>
+
+  <div class="filters-panel" data-filters-target="panel" hidden>
+    <%= form_with url: regions_path,
+          method: :get,
+          class: "filters-form",
+          data: {
+            turbo_frame: "locations_list",
+            filters_target: "form"
+          } do %>
+
+      <input
+        type="text"
+        name="q"
+        placeholder="Search locations..."
+        value="<%= params[:q] %>"
+        class="search-input"
+        data-action="input->filters#submit"
+      />
+
+      <select name="county_id" data-action="change->filters#submit">
+        <option value="">All counties</option>
+        <% @counties.each do |county| %>
+          <option value="<%= county.id %>"
+            <%= "selected" if params[:county_id] == county.id %>>
+            <%= county.name %>
+          </option>
+        <% end %>
+      </select>
+
+      <select name="type" data-action="change->filters#submit">
+        <option value="">All types</option>
+        <% @types.each do |type| %>
+          <option value="<%= type %>"
+            <%= "selected" if params[:type] == type %>>
+            <%= type %>
+          </option>
+        <% end %>
+      </select>
+
+      <% if params[:q].present? || params[:county_id].present? || params[:type].present? %>
+        <%= link_to "Clear Filters",
+              regions_path,
+              data: { turbo_frame: "locations_list" },
+              class: "clear-filters" %>
+      <% end %>
+
+    <% end %>
+  </div>
+</div>
