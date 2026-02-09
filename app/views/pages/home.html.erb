@@ -6,8 +6,8 @@
         <h1>SKAUTER</h1>
         <p>Book Albania's most cinematic filming locations</p>
       </div>
-      <div class="hero-search">
-        <%= form_with url: regions_path, method: :get, class: "search-bar", data: { controller: "hero-search" } do %>
+      <div id="hero-search" class="hero-search" data-controller="hero-search">
+        <%= form_with url: regions_path, method: :get, class: "search-bar" do %>
 
           <!-- ACTIVITY -->
           <div class="search-field"
@@ -257,7 +257,7 @@
     </div>
   </div>
 </section>
-
+<%= render "shared/cta_footer" %>
 <div
   data-controller="map"
   data-map-api-key-value="<%= @mapbox_api_key %>"

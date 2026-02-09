@@ -33,7 +33,7 @@
         <%= link_to "My Favorites", favorites_path, class: "link-navbar" %>
       <% end %>
 
-      <a href="" class="btn btn-navbar btn-gold-shimmer">
+      <a href="#hero-search" class="btn btn-navbar btn-gold-shimmer" data-action="click->scroll-to-search#go">
         Get Started
       </a>
 
@@ -44,6 +44,7 @@
       <% end %>
 
     </nav>
+
     <div class="menu-toggle burger" data-slideshow-target="burger">
       <button
         class="menu-icon"

@@ -15,6 +15,7 @@
   --link-navbar: hsl(0, 0%, 100%);
   --svg-stroke: rgba(0, 0, 0, 0.75);
   --location-description: hsl(222 47% 40%);
+  --footer-background: #0b3563; // deep Skauter blue
 }
 
 /* Golden Hour theme */
@@ -32,6 +33,8 @@ html.golden-hour {
   --link-navbar: hsl(27, 45%, 8%);
   --svg-stroke: rgba(255, 255, 255, 0.75);
   --location-description: hsl(46 70% 80%);
+  --footer-background: rgba(212, 175, 55, 0.55);
+;
 }
 
 
