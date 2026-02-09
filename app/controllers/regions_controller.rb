@@ -18,8 +18,11 @@ class RegionsController < ApplicationController
       )
     end
 
+    # Text search
     if params[:q].present?
-      locations_scope = locations_scope.search(params[:q])
+      locations_scope = locations_scope
+        .search_by_text(params[:q])
+        .reorder(nil) # 🔥 critical
     end
 
     # County
@@ -46,7 +49,7 @@ class RegionsController < ApplicationController
 
     @counties = County
       .joins(:locations)
-      .merge(locations_scope)
+      .where(locations: { id: locations_scope.select(:id) })
       .distinct
       .order(:name)
 

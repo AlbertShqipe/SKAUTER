@@ -25,20 +25,16 @@ class Location < ApplicationRecord
   scope :by_city, ->(city) { where(city: city) }
   scope :by_county, ->(county) { where(county: county) }
 
-  # include PgSearch::Model
+  include PgSearch::Model
 
-  # pg_search_scope :search,
-  #   against: {
-  #     name: "A",
-  #     city: "B",
-  #     address: "C"
-  #   },
-  #   associated_against: {
-  #     county: :name
-  #   },
-  #   using: {
-  #     tsearch: { prefix: true }
-  #   }
+  pg_search_scope :search_by_text,
+    against: [:name, :city, :address],
+    associated_against: {
+      county: [:name]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 
   TAGS = [
     "albanian",
