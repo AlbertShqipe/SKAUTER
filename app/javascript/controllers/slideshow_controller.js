@@ -7,5 +7,6 @@ export default class extends Controller {
   toggle() {
     this.panelTarget.classList.toggle("open")
     this.buttonTarget.classList.toggle("open")
+    console.log("this.buttonTarget:", this.buttonTarget)
   }
 }
