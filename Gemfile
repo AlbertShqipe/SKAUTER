@@ -78,4 +78,4 @@ group :test do
 end
 
 # Use Active Record's PostgreSQL-specific features [https://guides.rubyonrails.org/active_record_postgresql.html]
-gem "pg_search"
+# gem "pg_search"
