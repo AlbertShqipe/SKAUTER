@@ -61,22 +61,6 @@
   }
 }
 
-.navbar.not-home.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.08);
-
-  .navbar-brand,
-  .navigation-links a {
-    color: #111; // dark text
-  }
-
-  .line {
-    background-color: #111;
-  }
-}
-
 .navbar.not-home {
   background: transparent;
   -webkit-backdrop-filter: blur(10px);
@@ -85,6 +69,7 @@
   .navbar-brand,
   .navigation-links .link-navbar {
     color: var(--foreground);
+    text-shadow: 0 1px 4px var(--background);
   }
 
   .nav-divider {
@@ -96,5 +81,26 @@
 
   .line {
     background-color: var(--foreground);
+    box-shadow: 0 1px 4px var(--background);
+  }
+}
+
+.navbar.not-home.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+
+
+  .navbar-brand,
+  .navigation-links a {
+    color: #111; // dark text
+    box-shadow: none;
+    text-shadow: none;
+  }
+
+  .line {
+    background-color: #111;
+    box-shadow: none;
+    text-shadow: none;
   }
 }
