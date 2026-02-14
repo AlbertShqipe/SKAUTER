@@ -18,4 +18,14 @@ class VenueMailer < ApplicationMailer
       subject: "We received your venue submission"
     )
   end
+
+  def approved(venue)
+    @venue = venue
+    mail(to: @venue.email, subject: "Your venue has been approved")
+  end
+
+  def rejected(venue)
+    @venue = venue
+    mail(to: @venue.email, subject: "Your venue submission")
+  end
 end
