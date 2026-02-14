@@ -1,0 +1,27 @@
+<div style="width:90%" class="m-auto">
+
+  <h1>Venue Submission</h1>
+
+  <div class="venue-details container m-auto">
+    <p><strong>Name:</strong> <%= @venue.full_name %></p>
+    <p><strong>Email:</strong> <%= @venue.email %></p>
+    <p><strong>Phone:</strong> <%= @venue.phone %></p>
+    <p><strong>City:</strong> <%= @venue.city %></p>
+    <p><strong>Property Type:</strong> <%= @venue.property_type %></p>
+    <p><strong>Status:</strong> <%= @venue.status.capitalize %></p>
+    <% if @venue.pending? %>
+      <div class="d-flex justify-content-around">
+        <%= button_to "Approve",
+            admin_venue_path(@venue, status: :approved),
+            method: :patch,
+            class: "btn btn-success" %>
+
+        <%= button_to "Reject",
+              admin_venue_path(@venue, status: :rejected),
+              method: :patch,
+              class: "btn btn-danger" %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

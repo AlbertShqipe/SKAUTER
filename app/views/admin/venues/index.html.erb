@@ -1,0 +1,35 @@
+<h1>Submitted Venues</h1>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>City</th>
+      <th>Property Type</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @venues.each do |venue| %>
+      <tr>
+        <td><%= venue.full_name %></td>
+        <td><%= venue.email %></td>
+        <td><%= venue.city %></td>
+        <td><%= venue.property_type %></td>
+        <td>
+          <span class="status <%= venue.status %>">
+            <%= venue.status.capitalize %>
+          </span>
+        </td>
+        <td>
+          <%= link_to "View",
+                admin_venue_path(venue),
+                class:"admin-button" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

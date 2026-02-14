@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :locations
     root to: "locations#index"
     resources :counties
+    resources :venues, only: [:index, :show, :update]
   end
 
   # User favorites
@@ -22,4 +23,7 @@ Rails.application.routes.draw do
   end
 
   get "/favorites", to: "favorites#index", as: :favorites
+
+  resources :venues, only: [:new, :create]
+  get "list_venue", to: "venues#new"
 end

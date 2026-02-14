@@ -1,0 +1,74 @@
+<section class="list-venue-hero">
+  <div class="container">
+    <h1>List Your Venue</h1>
+    <p>
+      Share your unique Albanian location with filmmakers and production
+      companies worldwide
+    </p>
+  </div>
+</section>
+
+<section class="list-venue-form-section">
+  <div class="form-card">
+
+    <h2>Venue Information</h2>
+    <p class="form-subtitle">
+      Fill out the form below and our team will review your property
+    </p>
+
+    <%= form_with model: @venue, local: true do |f| %>
+
+      <div class="form-group">
+        <%= f.label :full_name, "Your Full Name *" %>
+        <%= f.text_field :full_name, placeholder: "John Doe", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email, "Email Address *" %>
+        <%= f.email_field :email, placeholder: "john@example.com", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :phone, "Phone Number *" %>
+        <%= f.telephone_field :phone, placeholder: "+355 XX XXX XXXX", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :city, "City *" %>
+        <%= f.text_field :city, placeholder: "Tirana, Berat, Gjirokastër, etc.", required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :property_type, "Property Type *" %>
+        <%= f.select :property_type,
+              [
+                "Villas & Estates",
+                "Hotels & Guesthouses",
+                "Historic & Cultural",
+                "Urban & Public Spaces",
+                "Nature & Outdoor",
+                "Industrial & Modern"
+              ],
+              { prompt: "Select property type" }, required: true %>
+
+        <small>Please select the type of property you're listing</small>
+      </div>
+
+      <div class="form-group checkbox-group">
+        <%= f.check_box :terms_accepted, required: true %>
+        <label>
+          I agree to the <span class="highlight">terms and conditions</span>
+          and confirm that I have the authority to list this property *
+        </label>
+      </div>
+
+      <%= f.submit "Submit Venue Listing", class: "btn btn-navbar btn-gold-shimmer w-100" %>
+
+    <% end %>
+
+    <p class="form-note">
+      Our team will review your submission within 2–3 business days
+    </p>
+
+  </div>
+</section>

@@ -39,4 +39,7 @@ class PagesController < ApplicationController
         ).count
     end
   end
+
+  def list_venue
+  end
 end
