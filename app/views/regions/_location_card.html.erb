@@ -15,7 +15,10 @@
       <%= location.county.name %>
     </span>
 
-    <%= render "favorites/heart", location: location %>
+    <% if user_signed_in? %>
+      <%= render "favorites/heart", location: location %>
+    <% end %>
+
   </div>
 
   <!-- CONTENT -->
