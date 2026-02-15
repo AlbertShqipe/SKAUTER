@@ -9,7 +9,7 @@
 
   .back-link {
     text-decoration: none;
-    color: #1f2937;
+    color: var(--primary);
     font-weight: 500;
   }
 }
@@ -46,7 +46,7 @@
   }
 
   .location-meta {
-    color: #6b7280;
+    color: var(--text);
     margin-bottom: 12px;
   }
 }
@@ -76,7 +76,7 @@
   }
 
   p {
-    color: #374151;
+    color: var(--text);
     line-height: 1.6;
   }
 }
@@ -110,9 +110,10 @@
 .price {
   font-size: 22px;
   margin-bottom: 12px;
+  color: black;
 
   span {
-    color: #6b7280;
+    color: var(--text);
     font-size: 14px;
   }
 }
@@ -139,6 +140,7 @@
 
 .booking-info {
   margin-bottom: 16px;
+  color: black;
 
   p {
     margin-bottom: 6px;
@@ -228,5 +230,5 @@
 .host-rating {
   margin-top: 4px;
   font-size: 14px;
-  color: #6b7280;
+  color: var(--text);
 }

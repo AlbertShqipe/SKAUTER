@@ -12,9 +12,11 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Send me reset password instructions" %>
+      <%= f.button :submit, "Send me reset password instructions", class: "btn-navbar" %>
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+  <div class="d-flex flex-column align-items-start mt-3 ">
+    <%= render "devise/shared/links" %>
+  </div>
 </div>

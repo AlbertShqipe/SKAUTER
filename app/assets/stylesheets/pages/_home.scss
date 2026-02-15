@@ -22,7 +22,7 @@
   .hero__overlay {
     position: absolute;
     inset: 0;
-    background: rgba(30, 58, 138, 0.55); // blue daylight
+    background: var(--overlay);
     transition: background 0.6s ease;
     overflow: hidden;
   }

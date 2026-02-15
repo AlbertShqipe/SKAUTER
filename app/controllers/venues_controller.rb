@@ -1,6 +1,24 @@
 class VenuesController < ApplicationController
+  skip_before_action :authenticate_user!
+
   def new
     @venue = Venue.new
+    @locations = Location.where(available: true)
+    @markers = @locations.filter_map do |location|
+      next unless location.latitude.present? && location.longitude.present?
+
+      {
+        id: location.id,
+        name: location.name.to_s,
+        lat: location.latitude.to_f,
+        lng: location.longitude.to_f,
+        county: {
+          id: location.county.id,
+          name: location.county.name,
+          slug: location.county.slug
+        }
+      }
+    end
   end
 
   def create

@@ -63,34 +63,40 @@
     </div>
 
     <!-- RIGHT: Booking card -->
-    <aside class="booking-card">
+    <aside class="booking-card"
+          data-controller="pricing"
+          data-pricing-hourly-value="<%= @location.price_per_hour %>"
+          data-pricing-daily-value="<%= @location.price_per_day %>">
 
       <div class="price">
-        <strong>ALL <%= @location.price_per_hour %></strong>
-        <span>/ hour</span>
+        <strong>
+          ALL
+          <span data-pricing-target="amount">
+            <%= number_with_delimiter(@location.price_per_hour) %>
+          </span>
+        </strong>
+        <span data-pricing-target="unit">/ hour</span>
       </div>
 
       <div class="pricing-toggle">
-        <button class="active">Hourly</button>
-        <button>Daily</button>
+        <button
+          class="active"
+          data-pricing-target="hourlyBtn"
+          data-action="click->pricing#showHourly">
+          Hourly
+        </button>
+
+        <button
+          data-pricing-target="dailyBtn"
+          data-action="click->pricing#showDaily">
+          Daily
+        </button>
       </div>
 
       <div class="booking-info">
         <p>👥 Up to <%= @location.capacity %> people</p>
         <p class="available">✔ Available for booking</p>
       </div>
-
-      <%#
-      <%= button_to "Request Booking",
-            new_location_booking_path(@location),
-            method: :get,
-            class: "btn-primary" %>
-
-      <%#
-      <p class="booking-note">
-        You won't be charged yet. Host will confirm availability.
-      </p>
-      %>
 
     </aside>
 
