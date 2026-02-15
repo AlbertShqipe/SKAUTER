@@ -100,17 +100,16 @@
 .booking-card {
   position: sticky;
   top: 100px;
-  background: white;
+  background: var(--background);
   border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  max-height: 400px;
+  box-shadow: 0 1px 10px var(--foreground);
+  max-height: 275px;
 }
 
 .price {
   font-size: 22px;
   margin-bottom: 12px;
-  color: black;
 
   span {
     color: var(--text);
@@ -140,7 +139,7 @@
 
 .booking-info {
   margin-bottom: 16px;
-  color: black;
+  color: var(--text);
 
   p {
     margin-bottom: 6px;
