@@ -1,16 +1,27 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 
-// Define fonts for body and headers
-$body-font: "Playfair Display", serif;
-$headers-font: "Playfair Display", serif;
+@font-face {
+  font-family: "coolvetica";
+  src: font-url("coolvetica-regular.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
 
-// To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+@font-face {
+  font-family: "coolvetica";
+  src: font-url("coolvetica-regular-italic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "coolvetica";
+  src: font-url("coolvetica-bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+// Define fonts for body and headers
+$body-font: "coolvetica", "Helvetica", "sans-serif";
+$headers-font: "coolvetica", "Helvetica", "sans-serif";

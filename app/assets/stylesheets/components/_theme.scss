@@ -1,7 +1,9 @@
 /* Default (daylight) theme */
 :root {
   --background: hsl(0 0% 100%);
-  --foreground: hsl(222 47% 11%);
+  --foreground: hsl(0, 0%, 0%);
+  --text-footer: hsl(0, 0%, 100%);
+  --text-footer-light: rgba(255, 255, 255, 0.85);
   --card: hsl(0 0% 100%);
   --card-foreground: hsl(222 47% 11%);
   --primary: hsl(209 100% 20%);
@@ -15,11 +17,11 @@
   --link-navbar: hsl(0, 0%, 100%);
   --svg-stroke: rgba(0, 0, 0, 0.75);
   --location-description: hsl(222 47% 40%);
-  --footer-background: #0b3563; // deep Skauter blue
+  --footer-background: black;
   --navbar-blur-background: rgba(255, 255, 255, 0.1);
   --back-link: #1f2937;
   --text: black;
-  --overlay:  rgba(30, 58, 138, 0.55);
+  --overlay:  rgba(0, 0, 0, 0.55);
   --booking-card-background: white;
   --booking-card-price:  #111827;
 }
@@ -27,7 +29,9 @@
 /* Golden Hour theme */
 html.golden-hour {
   --background: hsl(27 45% 8%);
-  --foreground: hsl(46 80% 85%);
+  --foreground: hsl(0, 0%, 100%);
+  --text-footer: hsl(0, 0%, 0%);
+  --text-footer-light: rgba(0, 0, 0, 0.85);
   --card: hsl(27 35% 12%);
   --card-foreground: hsl(46 70% 80%);
   --primary: hsl(46 63% 53%);
@@ -39,11 +43,11 @@ html.golden-hour {
   --link-navbar: hsl(27, 45%, 8%);
   --svg-stroke: rgba(255, 255, 255, 0.75);
   --location-description: hsl(46 70% 80%);
-  --footer-background: rgba(212, 175, 55, 0.55);
+  --footer-background: white;
   --navbar-blur-background: rgba(0, 0, 0, 0.3);
   --back-link: #97aac5;
-  --text: #6b7280;
-  --overlay:  rgba(212, 175, 55, 0.55);
+  --text: #666d7a;
+  --overlay:  rgba(0, 0, 0, 0.55);
   --booking-card-background: black;
   --booking-card-price: white;
 }
