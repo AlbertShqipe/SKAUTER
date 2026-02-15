@@ -1,27 +1,6 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 
-@font-face {
-  font-family: "coolvetica";
-  src: font-url("coolvetica-regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "coolvetica";
-  src: font-url("coolvetica-regular-italic.otf") format("opentype");
-  font-weight: 400;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "coolvetica";
-  src: font-url("coolvetica-bold.otf") format("opentype");
-  font-weight: 700;
-  font-style: normal;
-}
-
 // Define fonts for body and headers
-$body-font: "coolvetica", "Helvetica", "sans-serif";
-$headers-font: "coolvetica", "Helvetica", "sans-serif";
+$body-font: "Helvetica", "sans-serif";
+$headers-font: "Helvetica", "sans-serif";
