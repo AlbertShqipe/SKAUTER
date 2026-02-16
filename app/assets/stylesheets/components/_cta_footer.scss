@@ -1,7 +1,27 @@
 .cta-footer {
-  background: var(--footer-background);
-  padding: 5rem 1.5rem;
+  background: rgba(0, 0, 0, 0.451);
+  padding: 2rem 1.5rem;
   text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Gradient overlay */
+.cta-footer::before {
+  content: "";
+  position: absolute;
+  top: -50px;              // height of fade area
+  left: 0;
+  right: 0;
+  height: 50px;
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 0, 0, 0.451)
+  );
+
+  pointer-events: none;
 }
 
 .cta-footer-content {

@@ -15,8 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
     <%# IOS top %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="theme-color" content="#1e3a8a" data-theme="day">
+    <%# <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"> %>
+    <%# <meta name="theme-color" content="#1e3a8a" data-theme="day"> %>
 
 
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -35,6 +35,29 @@
 
     <%# Mapbox %>
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet"/>
+
+    <style>
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(<%= asset_path('hero-image-2.png') %>);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.9;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      body {
+        position: relative;
+        z-index: 0;
+      }
+    </style>
   </head>
 
   <body data-controller="theme slideshow lightbox scroll-to-search">
@@ -96,6 +119,6 @@
       <button class="lightbox-arrow right"
               data-action="click->lightbox#next">›</button>
     </div>
-
+    <div class="hero__overlay"></div>
   </body>
 </html>

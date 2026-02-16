@@ -4,10 +4,10 @@
 //  Hero Banner Styles //
   //=================//
 .home-banner {
-  background-image: url('hero-image-2.png');
-  background-size: cover;
-  background-position: center;
-  height: 80vh;
+  // background-image: url('hero-image-2.png');
+  // background-size: cover;
+  // background-position: center;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,13 +19,7 @@
     height: 100dvh;
   }
 
-  .hero__overlay {
-    position: absolute;
-    inset: 0;
-    background: var(--overlay);
-    transition: background 0.6s ease;
-    overflow: hidden;
-  }
+
 
   .hero__content {
     position: relative;
@@ -236,7 +230,7 @@
 }
 
 .check {
-  color: #d4a017; /* gold-ish */
+  color: black; /* gold-ish */
   font-weight: 700;
 }
 
@@ -276,7 +270,19 @@
 ========================= */
 .why-albania {
   padding: 6rem 1.5rem;
-  background: var(--background);
+  backface-visibility: visible;
+  position: relative;
+  z-index: 2;
+  // background-color: rgba(0, 0, 0, 0.402);
+  width: 90%;
+  margin: auto;
+  border-radius: 100px;
+  max-width: 1200px;
+  color: white;
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll; // NOT fixed
+  transition: background-size 0.2s ease-out;
 
   .container {
     max-width: 1200px;
@@ -290,7 +296,7 @@
         // font-family: "Playfair Display", serif;
         font-size: 3rem;
         font-weight: 700;
-        color: var(--primary);
+        color: white;
         margin-bottom: 1rem;
       }
 
@@ -312,8 +318,7 @@
       }
 
       .feature-card {
-        background: var(--card);
-        border: 1px solid var(--border);
+        background: #72727072;
         border-radius: 1rem;
         padding: 2rem;
         text-align: center;
@@ -330,7 +335,7 @@
           // font-family: "Playfair Display", serif;
           font-size: 1.5rem;
           font-weight: 700;
-          color: var(--primary);
+          color: white;
           margin-bottom: 0.75rem;
         }
 
@@ -350,12 +355,12 @@
           justify-content: center;
 
           border-radius: 50%;
-          background: rgba(212, 175, 55, 0.12); // accent/10
+          background: rgba(255, 255, 255, 0.12); // accent/10
 
           svg {
             width: 32px;
             height: 32px;
-            color: var(--accent);
+            color:white;
           }
         }
       }
@@ -371,8 +376,10 @@
     HOME – EXPLORE BY REGION
 ========================= */
 .home-regions {
-  padding: 5rem 2rem;
-  background: var(--background);
+  padding: 0rem 2rem;
+  // background: var(--background);
+  position: relative;
+  z-index: 2;
 
   .container {
     max-width: 1200px;
@@ -385,13 +392,13 @@
       h2 {
         font-size: 2.6rem;
         font-weight: 700;
-        color: var(--primary);
+        color: white;
         margin-bottom: 0.5rem;
       }
 
       p {
         font-size: 1rem;
-        color: var(--muted-foreground);
+        color: white;
       }
     }
 
@@ -489,7 +496,9 @@
 ========================= */
 .explore-by-type {
   padding: 5rem 2rem;
-  background: var(--background);
+  // background: var(--background);
+  position: relative;
+  z-index: 2;
 
   .container {
     max-width: 1200px;
@@ -502,13 +511,13 @@
       h2 {
         font-size: 2.6rem;
         font-weight: 700;
-        color: var(--primary);
+        color: white;
         margin-bottom: 0.5rem;
       }
 
       p {
         font-size: 1rem;
-        color: var(--muted-foreground);
+        color: white;
       }
     }
 

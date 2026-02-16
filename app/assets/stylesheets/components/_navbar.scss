@@ -62,11 +62,10 @@
 }
 
 .navbar.not-home {
-  background: var(--navbar-blur-background);
+  // background: var(--navbar-blur-background);
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
 
-  .navbar-brand,
   .navigation-links .link-navbar {
     color: var(--foreground);
     text-shadow: 0 1px 4px var(--background);

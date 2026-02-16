@@ -1,6 +1,6 @@
 <section>
   <div class="home-banner">
-    <div class="hero__overlay"></div>
+
     <div class="hero__content">
       <div class="hero-text">
         <h1>SKAUTER</h1>
@@ -159,7 +159,7 @@
     </div>
   </div>
 </section>
-<section class="why-albania">
+<section class="why-albania" data-controller="parallax" data-action="scroll@window->parallax#scroll">
   <div class="container">
 
     <header class="section-header">
@@ -266,7 +266,7 @@
   data-map-open-value="false">
 
   <button
-    class="map-toggle-btn"
+    class="map-toggle-btn btn btn-navbar btn-gold-shimmer"
     data-action="click->map#toggle"
     aria-label="Toggle map">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">

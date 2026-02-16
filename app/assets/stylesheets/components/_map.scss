@@ -83,7 +83,6 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: #9f1239;
   color: #fff;
   border: none;
   font-size: 1.2rem;
@@ -102,14 +101,14 @@
     stroke: white;
   }
 
-  &:hover {
-    transform: scale(1.05);
-    background-color: rgb(211, 175, 60);
+  // &:hover {
+  //   transform: scale(1.05);
+  //   background-color: rgb(211, 175, 60);
 
-    svg {
-      stroke: #9f1239;
-    }
-  }
+  //   svg {
+  //     stroke: #9f1239;
+  //   }
+  // }
 }
 
 .map-popup {
