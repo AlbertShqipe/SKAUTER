@@ -5,7 +5,7 @@
   right: 0;
   width: 100%;
   margin: 0 auto;
-  z-index: 1000;
+  z-index: 11000;
   background: transparent;
   transition:
     background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
@@ -41,7 +41,7 @@
   }
 
   .line {
-    background-color: var(--text);
+    background-color: var(--navbar-brand-text);
   }
 }
 
@@ -58,6 +58,10 @@
 
   .line {
     background-color: #111;
+  }
+
+  @media (max-width:760px) {
+
   }
 }
 
@@ -79,8 +83,7 @@
   }
 
   .line {
-    background-color: var(--foreground);
-    box-shadow: 0 1px 4px var(--background);
+    background-color: var(--navbar-brand-text)
   }
 }
 

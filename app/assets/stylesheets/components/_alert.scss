@@ -1,6 +1,27 @@
 .alert {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
+  bottom: 1.5rem;
+  right: 50%;
   z-index: 1000;
+  background-color: #72727072;
+  color: #ffffff;
+  transform: translateX(60%);
+  border-radius: 10px;
+  border: none;
+  padding: 15px 15px 15px 15px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  text-align: center;
+  align-items: center;
+}
+
+.btn-close-alerts {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 20px;
+
+  &:hover {
+    color: rgb(185, 185, 185);
+  }
 }

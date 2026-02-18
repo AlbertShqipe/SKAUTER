@@ -47,15 +47,15 @@
       <% end %>
     </div>
 
+    <div class="location-tags-regions mb-3">
+      <% location.tags.first(3).each do |tag| %>
+        <span class="tag"><%= tag.capitalize %></span>
+      <% end %>
+    </div>
+
     <%= link_to "View Details",
           location_path(location),
           class: "location-cta btn btn-navbar btn-gold-shimmer",
           data: { turbo_frame: "_top" } %>
-
-    <div class="location-tags">
-      <% location.tags.first(3).each do |tag| %>
-        <span class="tag"><%= tag %></span>
-      <% end %>
-    </div>
   </div>
 </div>

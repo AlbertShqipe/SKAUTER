@@ -18,6 +18,9 @@ Rails.application.configure do
   # Enable server timing
   config.server_timing = true
 
+  config.assets.debug = true
+  config.assets.compile = true
+
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
 

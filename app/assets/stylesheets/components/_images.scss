@@ -1,0 +1,7 @@
+.img-hero {
+  max-width: 900px;
+
+  @media (max-width: 760px) {
+    max-width: 450px;
+  }
+}

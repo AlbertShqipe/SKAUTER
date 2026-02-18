@@ -5,8 +5,9 @@ export default class extends Controller {
   static targets = ["panel", "button"]
 
   toggle() {
-    this.panelTarget.classList.toggle("open")
+    const isOpen = this.panelTarget.classList.toggle("open")
     this.buttonTarget.classList.toggle("open")
-    console.log("this.buttonTarget:", this.buttonTarget)
+
+    document.body.classList.toggle("no-scroll", isOpen)
   }
 }

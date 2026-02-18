@@ -7,7 +7,7 @@
   margin: 0 auto;
   z-index: 1000;
   background: linear-gradient(90deg, #111, #1a1a1a);
-  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  border-bottom: 1px solid $skauter-gold;
   transition:
   background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
   color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
@@ -57,7 +57,7 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   color: #111;
-  background: gold;
+  background: $skauter-gold;
   border-radius: 4px;
 }
 

@@ -12,13 +12,13 @@
 
 /* Daylight hero */
 html:not(.golden-hour) body:not(.scrolled) .status-bar-fill {
-  background: rgba(30, 58, 138, 0.55) !important;
+  background: rgb(255, 255, 255) !important;
 }
 
 /* Golden hour hero */
-html.golden-hour body:not(.scrolled) .status-bar-fill {
-  background: rgba(122, 88, 25, 0.55) !important;
-}
+// html.golden-hour body:not(.scrolled) .status-bar-fill {
+//   background: rgba(122, 88, 25, 0.55) !important;
+// }
 
 /* Scrolled navbar */
 body.scrolled .status-bar-fill {

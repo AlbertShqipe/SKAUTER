@@ -3,10 +3,11 @@
 
   @media (max-width: 760px) {
     display: flex;
+    position: relative;
     margin-right: 20px;
+    z-index: 11000;
   }
 
-  z-index: 999;
 }
 
 .menu-icon {
