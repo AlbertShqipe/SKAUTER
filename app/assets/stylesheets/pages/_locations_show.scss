@@ -2,6 +2,9 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 80px 24px 24px ;
+  position: relative;
+  z-index: 3;
+  color: white;
 }
 
 .location-nav {
@@ -9,8 +12,12 @@
 
   .back-link {
     text-decoration: none;
-    color: var(--primary);
+    color: white;
     font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -19,20 +26,45 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 32px;
-}
-
-@media (max-width: 900px) {
-  .location-grid {
+  @media (max-width: 900px) {
     grid-template-columns: 1fr;
   }
 }
 
+
 /* HERO */
-.location-hero img {
+.location-main img {
   width: 100%;
-  height: 420px;
+  max-width: 950px;
+  max-height: 600px;
   object-fit: cover;
   border-radius: 16px;
+  box-shadow: 0 1px 10px black;
+  border: none;
+}
+
+.location-images {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 0.75rem;
+}
+
+.location-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+
+  img {
+    width: 100%;
+    height: 70%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  @media (max-width:760px) {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
 }
 
 /* HEADER */
@@ -46,7 +78,7 @@
   }
 
   .location-meta {
-    color: var(--text);
+    color: white;
     margin-bottom: 12px;
   }
 }
@@ -58,10 +90,12 @@
   flex-wrap: wrap;
 
   .tag {
-    background: var(--background);
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-size: 14px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(173, 182, 195, 0.5);
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 500;
   }
 }
 
@@ -76,7 +110,7 @@
   }
 
   p {
-    color: var(--text);
+    color: white;
     line-height: 1.6;
   }
 }
@@ -100,53 +134,58 @@
 .booking-card {
   position: sticky;
   top: 100px;
-  background: var(--background);
+  background: rgba(173, 182, 195, 0.5);
   border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 1px 10px var(--foreground);
+  box-shadow: 0 1px 10px black;
   max-height: 275px;
-}
 
-.price {
-  font-size: 22px;
-  margin-bottom: 12px;
+  .price {
+    font-size: 22px;
+    margin-bottom: 12px;
 
-  span {
-    color: var(--text);
-    font-size: 14px;
-  }
-}
+    span {
+      color: white;
+      font-size: 14px;
+    }
 
-.pricing-toggle {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-
-  button {
-    flex: 1;
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
-    background: white;
-    cursor: pointer;
+    .currency {
+      color: $skauter-gold;
+      font-size: 1.5rem;
+    }
   }
 
-  .active {
-    background: #111827;
-    color: white;
+  .pricing-toggle {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    button {
+      flex: 1;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      background: white;
+      cursor: pointer;
+    }
+
+    .active {
+      background: #111827;
+      color: white;
+    }
   }
 }
 
 .booking-info {
   margin-bottom: 16px;
-  color: var(--text);
+  color: white;
 
   p {
     margin-bottom: 6px;
   }
 
   .available {
-    color: #16a34a;
+    color: #ffffff;
     font-weight: 500;
   }
 }
@@ -172,7 +211,7 @@
 
 /* HOST SECTION */
 .host-section {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .host-card {
@@ -229,5 +268,5 @@
 .host-rating {
   margin-top: 4px;
   font-size: 14px;
-  color: var(--text);
+  color: white;
 }

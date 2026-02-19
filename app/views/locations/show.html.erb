@@ -11,14 +11,31 @@
     <!-- LEFT: Gallery + content -->
     <div class="location-main">
 
+    <% images = @location.images.map { |img| url_for(img) } %>
+    <% if @location.cover_image.present? %>
+      <div class="location-hero">
+        <%= image_tag @location.cover_image, alt: @location.name %>
+      </div>
+    <% else %>
+        <%= image_tag "default.jpg", alt: "Default image" %>
+    <% end %>
 
-      <% if @location.cover_image.present? %>
-        <div class="location-hero">
-          <%= image_tag @location.cover_image, alt: @location.name %>
+    <% if @location.images.present? %>
+      <div class="location-images">
+        <div class="location-gallery">
+          <% @location.images.each_with_index do |image, index| %>
+            <%= image_tag image,
+              class: "clickable-image admin-image",
+              data: {
+                action: "click->lightbox#open",
+                lightbox_images: images.to_json,
+                lightbox_index: index
+              } %>
+          <% end %>
         </div>
-      <% else %>
-          <%= image_tag "default.jpg", alt: "Default image" %>
-      <% end %>
+      </div>
+    <% end %>
+
 
 
       <!-- Hero image -->
@@ -70,7 +87,9 @@
 
       <div class="price">
         <strong>
-          ALL
+          <span class="currency">
+            ALL
+          </span>
           <span data-pricing-target="amount">
             <%= number_with_delimiter(@location.price_per_hour) %>
           </span>
@@ -102,23 +121,23 @@
 
   </div>
   <section class="location-section host-section">
-  <h2>Hosted by</h2>
+    <h2>Hosted by</h2>
 
-  <div class="host-card">
-    <div class="host-avatar">
-      <span>S</span>
-    </div>
-
-    <div class="host-info">
-      <div class="host-name">
-        <strong>Skauter Team</strong>
-        <span class="verified-badge">✔ Verified</span>
+    <div class="host-card">
+      <div class="host-avatar">
+        <span>S</span>
       </div>
 
-      <div class="host-rating">
-        ⭐ 4.9 rating
+      <div class="host-info">
+        <div class="host-name">
+          <strong>Skauter Team</strong>
+          <span class="verified-badge">✔ Verified</span>
+        </div>
+
+        <div class="host-rating">
+          ⭐ 4.9 rating
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 </div>

@@ -84,7 +84,7 @@
           <a href="#hero-search" class="btn btn-navbar btn-gold-shimmer" data-action="click->scroll-to-search#go" style="font-size:1rem">
             Get Started
           </a>
-          <div class="d-flex gap-1">
+          <div class="d-flex gap-1 mt-5">
             <%= link_to "Sign In", new_user_session_path  %>
             <%= link_to "Sign Up", new_user_registration_path %>
           </div>
@@ -104,21 +104,23 @@
     <%= render "shared/flashes" %>
 
     <%= yield %>
-    <div id="lightbox"
-      data-lightbox-target="overlay"
-      hidden>
 
-      <button class="lightbox-close"
-              data-action="click->lightbox#close">×</button>
+    <div id="lightbox"
+        data-lightbox-target="overlay"
+        data-action="click->lightbox#closeOverlay"
+        hidden>
+
+      <%# <button class="lightbox-close"
+              data-action="click->lightbox#stop click->lightbox#close">×</button> %>
 
       <button class="lightbox-arrow left"
-              data-action="click->lightbox#prev">‹</button>
+              data-action="click->lightbox#stop click->lightbox#prev">‹</button>
 
       <div class="lightbox-track"
           data-lightbox-target="track"></div>
 
       <button class="lightbox-arrow right"
-              data-action="click->lightbox#next">›</button>
+              data-action="click->lightbox#stop click->lightbox#next">›</button>
     </div>
     <div class="hero__overlay"></div>
   </body>

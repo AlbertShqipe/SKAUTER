@@ -26,16 +26,50 @@ export default class extends Controller {
     document.body.style.overflow = ""
   }
 
+  closeOverlay(event) {
+    // Close only when clicking the overlay, not its children
+    if (event.currentTarget === this.overlayTarget) {
+      this.close()
+    }
+  }
+
+  stop(event) {
+    event.stopPropagation()
+  }
+
   render() {
     this.trackTarget.innerHTML = ""
 
-    const img = document.createElement("img")
-    img.src = this.images[this.index]
-    img.className = "lightbox-image"
+    // Reliable mobile detection
+    const isMobile =
+      navigator.maxTouchPoints > 0 && window.matchMedia("(pointer: coarse)").matches
 
-    this.trackTarget.appendChild(img)
+    if (isMobile) {
+      // MOBILE: render ALL images for horizontal scrolling
+      this.images.forEach((url) => {
+        const img = document.createElement("img")
+        img.src = url
+        img.className = "lightbox-image"
+        this.trackTarget.appendChild(img)
+      })
+
+      // Scroll to active image
+      requestAnimationFrame(() => {
+        this.trackTarget.children[this.index]?.scrollIntoView({
+          behavior: "instant",
+          inline: "center"
+        })
+      })
+
+    } else {
+      // DESKTOP: render only current image
+      const img = document.createElement("img")
+      img.src = this.images[this.index]
+      img.className = "lightbox-image"
+
+      this.trackTarget.appendChild(img)
+    }
   }
-
   next() {
     if (this.index < this.images.length - 1) {
       this.index++
