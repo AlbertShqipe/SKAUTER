@@ -22,7 +22,7 @@
   <% end %>
   >
     <div class="section-header-show">
-      <% unless @locations.any? %>
+      <% if @locations.any? %>
         <h2>Available Locations</h2>
       <% else %>
         <h2>No Locations Available</h2>
