@@ -22,7 +22,12 @@
   <% end %>
   >
     <div class="section-header-show">
-      <h2>Available Locations</h2>
+      <% unless @locations.any? %>
+        <h2>Available Locations</h2>
+      <% else %>
+        <h2>No Locations Available</h2>
+      <% end %>
+
       <span><%= pluralize(@locations.count, "location") %> in <%= @region %></span>
 
       <%= link_to "View on Map", regions_path(county: @county.slug), class: "map-btn" %>
