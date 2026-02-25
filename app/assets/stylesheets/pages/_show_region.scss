@@ -1,11 +1,24 @@
 /* =========================
-   REGION SHOW PAGE
+    REGION SHOW PAGE
 ========================= */
+.region-show-container {
+  position: relative;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow-y: scroll;
+  position: relative;
+  z-index: 3;
+}
 
 .region-show {
   padding: 0;
-  background: var(--background, #fff);
-  color: var(--foreground, #0f172a);
+  position: fixed;
+  inset: 0;
+  overflow-y: auto;
+  position: relative;
+  z-index: 2;
 }
 
 /* ---------- HERO ---------- */
@@ -17,26 +30,21 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
+  position: relative;
+  z-index: 3;
 }
 
-.region-hero .overlay {
+.region-hero .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(2rem, 6vw, 4rem);
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.35),
-    rgba(0, 0, 0, 0.85)
-  );
   color: #fff;
   width: 100%;
   height: 100%;
 
   .hero-content {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1090px;
     margin: 0 auto;
   }
 
@@ -63,7 +71,7 @@
 /* Hero text */
 
 .region-hero h1 {
-  font-family: var(--font-serif, serif);
+  font-family: white;
   font-size: clamp(2.5rem, 5vw, 3.75rem);
   font-weight: 700;
   margin-bottom: 0.5rem;
@@ -88,9 +96,15 @@
 /* ---------- LOCATIONS SECTION ---------- */
 
 .locations-section {
-  max-width: 1200px;
+  max-width: 1090px;
   margin: 0 auto;
-  padding: 4rem 2rem 5rem;
+  // padding: 0rem 2rem 5rem;
+  position: relative;
+  z-index: 3;
+
+  @media (max-width: 760px) {
+    padding: 4rem 1.5rem 0;
+  }
 }
 
 /* Section header */
@@ -108,6 +122,7 @@
   font-size: 1.75rem;
   font-weight: 600;
   margin: 0;
+  color: white;
 }
 
 .section-header-show span {

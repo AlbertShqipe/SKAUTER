@@ -1,8 +1,23 @@
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7); // blue daylight
+  background: rgba(0, 0, 0, 0.7);
   transition: background 0.6s ease;
   overflow: hidden;
   z-index: 1;
+}
+
+.global-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: background 0.6s ease;
+  overflow: hidden;
+  z-index: 2;
+  height: 100%;
+  width: 100dvw;
+
+  &.fade-out {
+    background: rgba(0, 0, 0, 0);
+  }
 }

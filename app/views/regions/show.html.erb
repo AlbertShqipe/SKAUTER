@@ -1,6 +1,6 @@
-<div class="region-show">
-  <section class="region-hero" style="<%= "background-image: url(#{url_for(@county.cover_image)})" if @county.cover_image.attached? %>; background-size: cover; background-position: center; overflow: hidden;">
-    <div class="overlay">
+<div class="region-show" style="<%= "background-image: url(#{url_for(@county.cover_image)})" if @county.cover_image.attached? %>; background-size: cover; background-position: center;">
+  <section class="region-hero">
+    <div class="container">
       <div class="hero-content">
 
         <%= link_to "← Back to Home", root_path, class: "back-link" %>
@@ -15,6 +15,7 @@
       </div>
     </div>
   </section>
+  <hr>
   <section class="locations-section">
     <div class="section-header-show">
       <h2>Available Locations</h2>
@@ -29,4 +30,5 @@
       <% end %>
     </div>
   </section>
+  <div class="global-overlay"></div>
 </div>
