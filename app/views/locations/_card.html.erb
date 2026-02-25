@@ -1,6 +1,7 @@
 <div class="location-card">
   <%= link_to location_path(location) do %>
     <div class="image-wrapper">
+      <div class="overlay"></div>
 
       <% if location.cover_image.attached? %>
         <%= image_tag url_for(location.cover_image), alt: location.name %>

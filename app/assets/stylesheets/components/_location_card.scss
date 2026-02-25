@@ -36,6 +36,13 @@
   aspect-ratio: 4 / 3;
   overflow: hidden;
   // background: #e5e7eb;
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    transition: background 0.35s ease;
+    z-index: 1;
+  }
 
   img {
     width: 100%;
