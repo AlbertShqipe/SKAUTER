@@ -16,7 +16,11 @@
     </div>
   </section>
   <hr>
-  <section class="locations-section">
+  <section class="locations-section"
+  <% unless @locations.any? %>
+  style="height: 40dvh;"
+  <% end %>
+  >
     <div class="section-header-show">
       <h2>Available Locations</h2>
       <span><%= pluralize(@locations.count, "location") %> in <%= @region %></span>
