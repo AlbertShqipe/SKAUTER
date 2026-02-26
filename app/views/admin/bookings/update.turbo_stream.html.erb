@@ -1,0 +1,7 @@
+<%= turbo_stream.replace dom_id(@booking) do %>
+  <%= render "booking_row", booking: @booking %>
+<% end %>
+
+<%= turbo_stream.replace "flash" do %>
+  <%= render "shared/flashes" %>
+<% end %>

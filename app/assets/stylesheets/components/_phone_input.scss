@@ -1,0 +1,30 @@
+/* Match input background and border */
+.intl-tel-input input {
+  background-color: white;
+  color: black;
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 100%; /* Full width to align with others */
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.iti--separate-dial-code .iti__selected-dial-code {
+  color: #333; /* Dial code color */
+}
+
+#phone {
+  color: #000000;           /* Text color */
+  // font-weight: bold;     /* Optional: bold text */
+  width: 100%;             /* Full width */
+  margin-bottom: 1rem;     /* Space below the input */
+}
+
+.iti__country-name {
+  color: #333; /* If intl-tel-input wraps the field */
+}
+
+.user_address {
+  margin-top: 1rem;
+}

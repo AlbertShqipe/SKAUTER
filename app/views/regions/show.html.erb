@@ -17,8 +17,8 @@
   </section>
   <hr>
   <section class="locations-section"
-  <% unless @locations.any? %>
-  style="height: 55dvh;"
+  <% if @locations.empty? || @locations.count >= 0 %>
+  style="height: 60dvh;"
   <% end %>
   >
     <div class="section-header-show">

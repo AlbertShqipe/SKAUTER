@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   # Public read-only locations
-  resources :locations, only: %i[index show]
+  resources :locations, only: %i[index show] do
+    resources :bookings, only: %i[new create]
+    get "availability", to: "bookings#availability"
+  end
+
   resources :regions,
           path: "explore",
           only: %i[index show],
@@ -15,6 +19,7 @@ Rails.application.routes.draw do
     root to: "locations#index"
     resources :counties
     resources :venues, only: [:index, :show, :update]
+    resources :bookings, only: %i[index show update]
   end
 
   # User favorites

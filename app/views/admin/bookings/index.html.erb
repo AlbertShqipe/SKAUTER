@@ -1,0 +1,35 @@
+<div class="admin-page">
+  <div class="admin-header">
+    <h1>Bookings</h1>
+
+    <div class="admin-actions">
+      <%= link_to "All", admin_bookings_path, class: "admin-link" %>
+      <%= link_to "Pending", admin_bookings_path(status: "pending"), class: "admin-link" %>
+      <%= link_to "Approved", admin_bookings_path(status: "approved"), class: "admin-link" %>
+      <%= link_to "Rejected", admin_bookings_path(status: "rejected"), class: "admin-link" %>
+    </div>
+  </div>
+
+  <div class="admin-card">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Location</th>
+          <th>User</th>
+          <th>Type</th>
+          <th>When</th>
+          <th>Total</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @bookings.each do |booking| %>
+          <%= render "booking_row", booking: booking %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

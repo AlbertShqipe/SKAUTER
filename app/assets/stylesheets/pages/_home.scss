@@ -11,6 +11,7 @@
   color: white;
   text-align: center;
   position: relative;
+  z-index: 1000;
 
   @media (max-width: 760px) {
     height: 100dvh;

@@ -1,0 +1,54 @@
+<turbo-frame id="<%= dom_id(booking) %>">
+  <tr>
+    <td>
+      <span class="
+        <%= "badge-yellow" if booking.pending? %>
+        <%= "badge-green" if booking.approved? %>
+        <%= "badge-red" if booking.rejected? %>">
+        <%= booking.status %>
+      </span>
+    </td>
+
+    <td><%= booking.location.name %></td>
+    <td><%= booking.user.email %></td>
+    <td><%= booking.booking_type %></td>
+
+    <td>
+      <% if booking.hourly? %>
+        <%= l(booking.starts_at, format: :short) %>
+        →
+        <%= l(booking.ends_at, format: :short) %>
+      <% else %>
+        <%= booking.starts_at.to_date %>
+        →
+        <%= booking.ends_at.to_date %>
+      <% end %>
+    </td>
+
+    <td>
+      ALL <%= number_with_delimiter(booking.total_price.to_i) %>
+    </td>
+
+    <td>
+      <%= link_to "View", admin_booking_path(booking), class: "btn btn-secondary" %>
+    </td>
+
+    <td class="booking-actions">
+      <% if booking.pending? %>
+        <%= button_to "Approve",
+              admin_booking_path(booking, status: "approved"),
+              method: :patch,
+              form: { data: { turbo_stream: true } },
+              class: "btn btn-success" %>
+
+        <%= button_to "Reject",
+              admin_booking_path(booking, status: "rejected"),
+              method: :patch,
+              form: { data: { turbo_stream: true } },
+              class: "btn btn-danger" %>
+      <% else %>
+        —
+      <% end %>
+    </td>
+  </tr>
+</turbo-frame>

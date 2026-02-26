@@ -76,7 +76,6 @@
 
               <% Location.dynamic_location_type_groups.each do |group, types| %>
                 <div class="dropdown-group">
-                  <div class="dropdown-group-title"><%= group %></div>
 
                   <% types.each do |type| %>
                     <% display = type.to_s.titleize %>
@@ -114,6 +113,7 @@
 
             <div class="search-dropdown"
                 data-hero-search-target="dateDropdown"
+                data-action="click->hero-search#stopPropagation"
                 hidden>
 
               <div class="dropdown-title">When are you planning?</div>
@@ -125,12 +125,19 @@
                 <span>Anytime</span>
               </button>
 
+
               <div class="dropdown-calendar">
                 <input type="date"
                       class="date-input"
-                      data-action="change->hero-search#selectDate"
-                      data-hero-search-target="dateInputField">
+                      data-hero-search-target="startDateField"
+                      data-action="change->hero-search#updateDateRange">
+
+                <input type="date"
+                      class="date-input"
+                      data-hero-search-target="endDateField"
+                      data-action="change->hero-search#updateDateRange">
               </div>
+
 
             </div>
           </div>
@@ -142,9 +149,13 @@
           <%= hidden_field_tag :location_type,
               params[:location_type],
               data: { hero_search_target: "locationTypeInput" } %>
-          <%= hidden_field_tag :date,
-              params[:date],
-              data: { hero_search_target: "dateInput" } %>
+          <%= hidden_field_tag :start_date,
+                params[:start_date],
+                data: { hero_search_target: "startDateInput" } %>
+
+          <%= hidden_field_tag :end_date,
+                params[:end_date],
+                data: { hero_search_target: "endDateInput" } %>
 
           <!-- SUBMIT -->
           <div class="search-action">

@@ -1,4 +1,4 @@
-<div class="user-session-container">
+<div class="user-session-container-signup" data-controller="phone">
   <div class="user-session-form">
     <h2>Sign up</h2>
 
@@ -6,6 +6,28 @@
       <%= f.error_notification %>
 
       <div class="form-inputs">
+        <%= f.input :first_name,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "given-name" } %>
+
+        <%= f.input :last_name,
+                    required: true,
+                    input_html: { autocomplete: "family-name" } %>
+
+        <%= f.input :phone_number,
+                    required: true,
+                    as: :tel,
+                    input_html: {
+                      autocomplete: "tel",
+                      class: "form-control audition_application_phone_number",
+                      id: "phone"
+                    } %>
+
+        <%= f.input :address,
+                    required: true,
+                    input_html: { autocomplete: "street-address" } %>
+
         <%= f.input :email,
                     required: true,
                     autofocus: true,

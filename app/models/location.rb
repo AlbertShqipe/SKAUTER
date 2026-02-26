@@ -7,6 +7,10 @@ class Location < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_by, through: :favorites, source: :user
 
+  has_many :bookings, dependent: :destroy
+
+  scope :available, -> { where(available: true) }
+
   # Validations
   validates :name, presence: true
   validates :city, presence: true
@@ -125,6 +129,16 @@ class Location < ApplicationRecord
   after_initialize do
     self.tags ||= []
     self.amenities ||= []
+  end
+
+  def available_for?(starts_at, ends_at)
+    return false unless available # global toggle
+    return true if starts_at.blank? || ends_at.blank?
+
+    !bookings
+      .where(status: [:pending, :approved])
+      .where("starts_at < ? AND ends_at > ?", ends_at, starts_at)
+      .exists?
   end
 
   def price_label

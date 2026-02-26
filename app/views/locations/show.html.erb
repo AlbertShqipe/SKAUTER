@@ -80,42 +80,96 @@
     </div>
 
     <!-- RIGHT: Booking card -->
-    <aside class="booking-card"
-          data-controller="pricing"
-          data-pricing-hourly-value="<%= @location.price_per_hour %>"
-          data-pricing-daily-value="<%= @location.price_per_day %>">
 
-      <div class="price">
-        <strong>
-          <span class="currency">
-            ALL
-          </span>
-          <span data-pricing-target="amount">
-            <%= number_with_delimiter(@location.price_per_hour) %>
-          </span>
-        </strong>
-        <span data-pricing-target="unit">/ hour</span>
-      </div>
+    <aside class="booking-card">
+      <%= form_with model: [@location, Booking.new],
+          data: {
+          controller: "pricing booking-availability",
+          booking_availability_url_value: location_availability_path(@location),
+          pricing_hourly_value: @location.price_per_hour,
+          pricing_daily_value: @location.price_per_day
+        } do |f| %>
 
-      <div class="pricing-toggle">
-        <button
-          class="active"
-          data-pricing-target="hourlyBtn"
-          data-action="click->pricing#showHourly">
-          Hourly
-        </button>
+        <div class="price">
+          <strong>
+            <span class="currency">ALL</span>
+            <span data-pricing-target="amount">
+              <%= number_with_delimiter(@location.price_per_hour) %>
+            </span>
+          </strong>
+          <span data-pricing-target="unit">/ hour</span>
+        </div>
 
-        <button
-          data-pricing-target="dailyBtn"
-          data-action="click->pricing#showDaily">
-          Daily
-        </button>
-      </div>
+        <div class="pricing-toggle">
+          <button
+            type="button"
+            class="active"
+            data-pricing-target="hourlyBtn"
+            data-action="click->pricing#showHourly">
+            Hourly
+          </button>
 
-      <div class="booking-info">
-        <p>👥 Up to <%= @location.capacity %> people</p>
-        <p class="available">✔ Available for booking</p>
-      </div>
+          <button
+            type="button"
+            data-pricing-target="dailyBtn"
+            data-action="click->pricing#showDaily">
+            Daily
+          </button>
+        </div>
+
+        <div class="booking-info">
+          <p>👥 Up to <%= @location.capacity %> people</p>
+          <p class="available">✔ Available for booking</p>
+        </div>
+
+
+        <% if user_signed_in? %>
+          <%= f.hidden_field :booking_type, value: "hourly", data: { pricing_target: "type" } %>
+
+          <!-- HOURLY FIELDS -->
+          <div data-pricing-target="hourlyFields" class="pricing-fields">
+            <div class="form-group hourly-field">
+              <%= f.label :starts_at, "Start" %>
+              <%= f.datetime_local_field :starts_at,
+                  data: { booking_availability_target: "start", action: "change->booking-availability#update input->booking-availability#update" } %>
+            </div>
+
+            <div class="form-group hourly-field">
+              <%= f.label :ends_at, "End" %>
+              <%= f.datetime_local_field :ends_at,
+                  data: { booking_availability_target: "end", action: "change->booking-availability#update input->booking-availability#update" } %>
+            </div>
+          </div>
+
+          <!-- DAILY FIELDS -->
+          <div data-pricing-target="dailyFields" class="pricing-fields" hidden>
+            <div class="form-group daily-field">
+              <%= f.label :starts_at, "Start date" %>
+              <%= f.date_field :starts_at, required: true %>
+            </div>
+
+            <div class="form-group daily-field">
+              <%= f.label :ends_at, "End date" %>
+              <%= f.date_field :ends_at, required: true %>
+            </div>
+          </div>
+
+          <% available_now = @location.available_for?(f.object.starts_at, f.object.ends_at) %>
+
+          <%= f.submit "Request Booking",
+                class: "btn-primary",
+                disabled: true,
+                data: { booking_availability_target: "submit" } %>
+
+        <% else %>
+
+          <%= button_to "Sign in to Book",
+            new_user_session_path,
+            method: :get,
+            class: "btn-primary" %>
+
+        <% end %>
+      <% end %>
 
     </aside>
 

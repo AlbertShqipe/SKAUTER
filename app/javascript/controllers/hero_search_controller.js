@@ -4,7 +4,9 @@ export default class extends Controller {
   static targets = [
     "activityDropdown", "activityLabel", "activityInput", "activityCheck",
     "locationTypeDropdown", "locationTypeLabel", "locationTypeInput", "locationTypeCheck",
-    "dateDropdown", "dateLabel", "dateInput", "dateInputField"
+    "dateDropdown", "dateLabel",
+    "startDateField", "endDateField",
+    "startDateInput", "endDateInput"
   ]
 
   connect() {
@@ -52,15 +54,24 @@ export default class extends Controller {
     }
   }
 
-  selectDate(event) {
+  stopPropagation(event) {
     event.stopPropagation()
+  }
 
-    const value = event.currentTarget.value || event.currentTarget.dataset.value || ""
+  updateDateRange() {
+    const start = this.startDateFieldTarget.value
+    const end = this.endDateFieldTarget.value
 
-    this.dateInputTarget.value = value
-    this.dateLabelTarget.textContent = value || "Anytime"
+    this.startDateInputTarget.value = start
+    this.endDateInputTarget.value = end
 
-    this.dateDropdownTarget.hidden = true
+    if (start && end) {
+      this.dateLabelTarget.textContent = `${start} → ${end}`
+    } else if (start) {
+      this.dateLabelTarget.textContent = start
+    } else {
+      this.dateLabelTarget.textContent = "Anytime"
+    }
   }
 
   selectLocationType(event) {

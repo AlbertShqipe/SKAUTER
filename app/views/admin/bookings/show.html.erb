@@ -1,0 +1,55 @@
+<div class="admin-page">
+  <div class="admin-header">
+    <h1>Booking</h1>
+
+    <div class="admin-actions">
+      <%= link_to "Back", admin_bookings_path, class: "admin-link" %>
+
+      <% if @booking.pending? %>
+        <%= button_to "Approve",
+              admin_booking_path(@booking, status: "approved"),
+              method: :patch,
+              class: "admin-button",
+              form: { data: { turbo_stream: true } } %>
+
+        <%= button_to "Reject",
+              admin_booking_path(@booking, status: "rejected"),
+              method: :patch,
+              class: "admin-button danger",
+              form: { data: { turbo_stream: true } } %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="admin-card">
+    <p><strong>Status:</strong> <%= @booking.status.capitalize %></p>
+    <p><strong>Location:</strong> <%= @booking.location&.name %>, <%= @booking.location&.address %>, <%= @booking.location&.county&.name %></p>
+    <p><strong>User:</strong> <%= @booking.user&.email %></p>
+    <p><strong>Type:</strong> <%= @booking.booking_type %></p>
+
+    <% if @booking.hourly? %>
+      <p><strong>Starts:</strong> <%= l(@booking.starts_at, format: :long) %></p>
+      <p><strong>Ends:</strong> <%= l(@booking.ends_at, format: :long) %></p>
+    <% else %>
+      <p><strong>Start date:</strong> <%= @booking.start_date %></p>
+      <p><strong>End date:</strong> <%= @booking.end_date %></p>
+    <% end %>
+
+    <p><strong>Total time:</strong> <%= @booking.hours || @booking.days %> <%= @booking.hours ? "hours" : "days" %></p>
+    <p><strong>Total:</strong> ALL <%= number_with_delimiter(@booking.total_price.to_i) %></p>
+
+    <% if @booking.approved? %>
+      <p><strong>Location availability:</strong> <%= @booking.location&.available? ? "Available" : "Not available" %></p>
+    <% end %>
+    <%= link_to "View location", admin_location_path(@booking.location), class: "btn btn-secondary" %>
+  </div>
+
+  <div class="admin-card">
+    <h2>Booking User</h2>
+    <p><strong>Name:</strong> <%= @booking.user.full_name %></p>
+    <p><strong>Email:</strong> <%= @booking.user.email %></p>
+    <p><strong>Phone:</strong> <%= @booking.user.phone_number %></p>
+    <p><strong>Address:</strong> <%= @booking.user.address %></p>
+
+  </div>
+</div>

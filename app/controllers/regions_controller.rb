@@ -5,7 +5,7 @@ class RegionsController < ApplicationController
     # --- FILTER PARAMS ---
     activity      = params[:activity]
     location_type = params[:location_type]
-    date          = params[:date] # placeholder
+    date          = params[:start_date] # placeholder
 
     # --- BASE LOCATIONS SCOPE ---
     locations_scope = Location.where(available: true)
@@ -44,6 +44,18 @@ class RegionsController < ApplicationController
       locations_scope = locations_scope.where("location_type ~* ?", rule.source) if rule
     end
 
+    if params[:start_date].present? && params[:end_date].present?
+      start_date = Time.zone.parse(params[:start_date])
+      end_date   = Time.zone.parse(params[:end_date]).end_of_day
+
+      locations_scope = locations_scope.where.not(
+        id: Booking
+          .where(status: [:pending, :approved])
+          .where("starts_at < ? AND ends_at > ?", end_date, start_date)
+          .select(:location_id)
+      )
+    end
+
     # --- DATA ---
     @locations = locations_scope.includes(:county)
 
@@ -73,6 +85,6 @@ class RegionsController < ApplicationController
 
   def show
     @county = County.find_by!(slug: params[:slug])
-    @locations = @county.locations.where(available: true)
+    @locations = @county.locations
   end
 end
