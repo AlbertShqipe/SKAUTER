@@ -30,7 +30,7 @@ class VenuesController < ApplicationController
       VenueMailer.confirmation(@venue).deliver_later
 
       redirect_to root_path,
-        notice: "Your venue has been submitted successfully."
+        notice: "Your venue has been submitted successfully. Check your email for a confirmation message, spam folder included."
     else
       render :new, status: :unprocessable_entity
     end
