@@ -1,6 +1,4 @@
 class VenueMailer < ApplicationMailer
-  default from: "no-reply@skauter.al"
-
   def new_submission(venue)
     @venue = venue
 
