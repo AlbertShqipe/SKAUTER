@@ -21,20 +21,20 @@
     <% end %>
 
     <% if @location.images.present? %>
-      <div class="location-images">
-        <div class="location-gallery">
-          <% @location.images.each_with_index do |image, index| %>
-            <%= image_tag image,
-              class: "clickable-image admin-image",
-              data: {
-                action: "click->lightbox#open",
-                lightbox_images: images.to_json,
-                lightbox_index: index
-              } %>
-          <% end %>
+        <div class="location-images">
+          <div class="location-gallery">
+            <% @location.images.each_with_index do |image, index| %>
+              <%= image_tag image, alt: "#{@location.name} image #{index + 1}",
+                class: "clickable-image admin-image",
+                data: {
+                  action: "click->lightbox#open",
+                  lightbox_images: images.to_json,
+                  lightbox_index: index
+                } %>
+            <% end %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
 
 
 

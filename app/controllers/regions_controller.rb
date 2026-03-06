@@ -57,7 +57,7 @@ class RegionsController < ApplicationController
     end
 
     # --- DATA ---
-    @locations = locations_scope.includes(:county)
+    @locations = locations_scope.includes(:county).order("RANDOM()")
 
     @counties = County
       .joins(:locations)

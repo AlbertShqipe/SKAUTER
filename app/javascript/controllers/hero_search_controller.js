@@ -10,7 +10,6 @@ export default class extends Controller {
   ]
 
   connect() {
-
     this.handleOutsideClick = this.handleOutsideClick.bind(this)
     document.addEventListener("click", this.handleOutsideClick)
   }
@@ -19,21 +18,26 @@ export default class extends Controller {
     document.removeEventListener("click", this.handleOutsideClick)
   }
 
-  toggleActivity(event) {
-    // Prevent document click from firing immediately
-    event.stopPropagation()
+  closeAll() {
+    this.activityDropdownTarget.hidden = true
+    this.locationTypeDropdownTarget.hidden = true
+    this.dateDropdownTarget.hidden = true
+  }
 
-    // Ignore clicks on dropdown items
+  toggleActivity(event) {
+    event.stopPropagation()
     if (event.target.closest(".dropdown-item")) return
 
-    this.activityDropdownTarget.hidden =
-      !this.activityDropdownTarget.hidden
+    const willOpen = this.activityDropdownTarget.hidden
+    this.closeAll()
+    this.activityDropdownTarget.hidden = !willOpen
   }
 
   toggleLocationType(event) {
     event.stopPropagation()
 
     const willOpen = this.locationTypeDropdownTarget.hidden
+    this.closeAll()
     this.locationTypeDropdownTarget.hidden = !willOpen
 
     if (willOpen) {
@@ -46,6 +50,7 @@ export default class extends Controller {
     event.stopPropagation()
 
     const willOpen = this.dateDropdownTarget.hidden
+    this.closeAll()
     this.dateDropdownTarget.hidden = !willOpen
 
     if (willOpen) {
@@ -105,9 +110,7 @@ export default class extends Controller {
 
   handleOutsideClick(event) {
     if (!this.element.contains(event.target)) {
-      this.activityDropdownTarget.hidden = true
-      this.locationTypeDropdownTarget.hidden = true
-      this.dateDropdownTarget.hidden = true
+      this.closeAll()
     }
   }
 }
