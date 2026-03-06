@@ -35,7 +35,6 @@
 /* HERO */
 .location-images {
   width: 900px;
-  margin-top: 0.75rem;
   border-radius: 10px;
   overflow: hidden;
 
@@ -107,7 +106,7 @@
   &::-webkit-scrollbar { display: none; }
 
   @media (max-width: 900px) {
-    width: 90%;
+    width: 100%;
     margin: 0.75rem auto;
   }
 }
