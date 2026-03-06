@@ -38,6 +38,11 @@
   margin-top: 0.75rem;
   border-radius: 10px;
   overflow: hidden;
+
+  @media (max-width: 900px) {
+    width: 90%;
+    margin: auto;
+  }
 }
 
 .gallery-hero {
@@ -100,6 +105,11 @@
   scrollbar-width: none;
 
   &::-webkit-scrollbar { display: none; }
+
+  @media (max-width: 900px) {
+    width: 90%;
+    margin: 0.75rem auto;
+  }
 }
 
 .gallery-thumb {
