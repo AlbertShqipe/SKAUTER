@@ -44,87 +44,44 @@
 }
 
 .location-images {
+  max-width: 100%;
+  border-radius: 10px;
   margin-top: 0.75rem;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.gallery-hero {
   position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #111;
-  border-radius: 10px;
-  overflow: hidden;
-
-  .gallery-hero-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.3s ease;
-  }
 }
 
-.gallery-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.45);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 1.5rem;
-  cursor: pointer;
+.location-gallery {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-  z-index: 2;
-
-  &:hover { background: rgba(0, 0, 0, 0.7); }
-  &--left  { left: 12px; }
-  &--right { right: 12px; }
-}
-
-.gallery-counter {
-  position: absolute;
-  bottom: 12px;
-  right: 14px;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  font-size: 0.8rem;
-  padding: 3px 8px;
-  border-radius: 20px;
-}
-
-.gallery-thumbs {
-  display: flex;
-  gap: 0.5rem;
+  gap: 0.75rem;
   overflow-x: auto;
-  padding: 0.5rem 0;
-  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; // hide scrollbar Firefox
 
-  &::-webkit-scrollbar { display: none; }
-}
+  &::-webkit-scrollbar {
+    display: none; // hide scrollbar Chrome/Safari
+  }
 
-.gallery-thumb {
-  flex: 0 0 auto;
-  width: 100px;
-  height: 68px;
-  object-fit: cover;
-  border-radius: 6px;
-  cursor: pointer;
-  opacity: 0.55;
-  transition: opacity 0.2s, outline 0.2s;
+  img {
+    flex: 0 0 auto;
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    scroll-snap-align: start;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
 
-  &:hover { opacity: 0.85; }
+    &:hover {
+      opacity: 0.9;
+    }
+  }
 
-  &.active {
-    opacity: 1;
-    outline: 2px solid white;
-    outline-offset: 2px;
+  @media (max-width: 760px) {
+    img {
+      width: 200px;
+      height: 140px;
+    }
   }
 }
 
