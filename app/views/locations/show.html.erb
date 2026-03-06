@@ -11,32 +11,48 @@
     <!-- LEFT: Gallery + content -->
     <div class="location-main">
 
-    <% images = @location.images.map { |img| url_for(img) } %>
-    <% if @location.cover_image.present? %>
-      <div class="location-hero">
-        <%= image_tag @location.cover_image, alt: @location.name %>
-      </div>
-    <% else %>
-        <%= image_tag "default.jpg", alt: "Default image" %>
-    <% end %>
+      <% images = @location.images.map { |img| url_for(img) } %>
+      <% if @location.cover_image.present? || @location.images.present? %>
+        <%
+          all_images = []
+          all_images << url_for(@location.cover_image) if @location.cover_image.present?
+          all_images += @location.images.map { |img| url_for(img) }
+        %>
 
+        <div class="location-images" data-controller="gallery">
 
-      <!-- Hero image -->
-    <% if @location.images.present? %>
-      <div class="location-images">
-        <div class="location-gallery">
-          <% @location.images.each_with_index do |image, index| %>
-            <%= image_tag image, alt: "#{@location.name} image #{index + 1}",
-              class: "clickable-image admin-image",
-              data: {
-                action: "click->lightbox#open",
-                lightbox_images: images.to_json,
-                lightbox_index: index
-              } %>
-          <% end %>
+          <!-- Hero -->
+          <div class="gallery-hero">
+            <%= image_tag all_images.first,
+              class: "gallery-hero-img",
+              data: { gallery_target: "hero" } %>
+
+            <button class="gallery-arrow gallery-arrow--left"
+                    data-action="click->gallery#prev">&#8249;</button>
+            <button class="gallery-arrow gallery-arrow--right"
+                    data-action="click->gallery#next">&#8250;</button>
+
+            <span class="gallery-counter">
+              <span data-gallery-target="current">1</span> / <%= all_images.count %>
+            </span>
+          </div>
+
+          <!-- Thumbnails -->
+          <div class="gallery-thumbs" data-gallery-target="thumbs">
+            <% all_images.each_with_index do |image, index| %>
+              <%= image_tag image,
+                class: "gallery-thumb #{"active" if index == 0}",
+                data: {
+                  action: "click->gallery#goTo",
+                  gallery_index: index,
+                  gallery_target: "thumb",
+                  full: image
+                } %>
+            <% end %>
+          </div>
+
         </div>
-      </div>
-    <% end %>
+      <% end %>
 
       <!-- Title & meta -->
       <div class="location-header">
