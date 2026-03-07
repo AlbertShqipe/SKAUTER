@@ -1,6 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
+  connect() {
+    if (!this.hasElement) return
+  }
   hover(event) {
     const card = event.currentTarget
     const lat = parseFloat(card.dataset.lat)
