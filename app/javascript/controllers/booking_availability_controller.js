@@ -5,7 +5,7 @@ export default class extends Controller {
   static values = { url: String }
 
   connect() {
-    if (!this.hasTypeTarget) return
+    if (!this.hasStartTarget) return
     this.update()
   }
 

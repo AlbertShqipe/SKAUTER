@@ -14,6 +14,7 @@ export default class extends Controller {
   static values = { hourly: Number, daily: Number }
 
   connect() {
+    if (!this.hasTypeTarget) return
     this.showHourly() // default state
   }
 
