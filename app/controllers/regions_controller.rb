@@ -28,6 +28,7 @@ class RegionsController < ApplicationController
     # County
     if params[:county_id].present?
       locations_scope = locations_scope.where(county_id: params[:county_id])
+      @selected_county = County.find_by(id: params[:county_id])
     end
 
     # Exact type
