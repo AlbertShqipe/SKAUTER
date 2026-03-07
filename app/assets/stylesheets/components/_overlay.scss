@@ -14,10 +14,14 @@
   transition: background 0.6s ease;
   overflow: hidden;
   z-index: 2;
-  height: 160dvh;
+  height: 100%;
   width: 100dvw;
 
   &.fade-out {
     background: rgba(0, 0, 0, 0);
+  }
+
+  @media (max-width:900px) {
+    height: 160dvh;
   }
 }
