@@ -102,7 +102,8 @@
 }
 
 .gallery-thumbs {
-  width: 800px !important;
+  width: 100%;
+  max-width: 100%;
   display: flex;
   gap: 0.5rem;
   overflow-x: auto;
