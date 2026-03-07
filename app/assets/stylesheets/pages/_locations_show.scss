@@ -5,6 +5,11 @@
   position: relative;
   z-index: 3;
   color: white;
+
+  @media  (max-width: 900px) {
+    width: 100%;
+    padding: 60px 16px 16px;
+  }
 }
 
 .location-main {
