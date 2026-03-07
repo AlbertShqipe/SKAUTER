@@ -7,7 +7,8 @@
   position: relative;
   z-index: 3;
   color: white;
-  box-sizing: border-box; // ← ADD
+  box-sizing: border-box;
+  position: relative;
 
   @media  (max-width: 900px) {
     width: 100%;
@@ -216,7 +217,6 @@
 
 /* BOOKING CARD */
 .booking-card {
-  min-width: 0;
   position: sticky;
   top: 100px;
   background: rgba(173, 182, 195, 0.5);
