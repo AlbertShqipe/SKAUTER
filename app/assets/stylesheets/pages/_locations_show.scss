@@ -8,7 +8,6 @@
 
   @media  (max-width: 900px) {
     width: 100%;
-    padding: 60px 16px 16px;
   }
 }
 
@@ -16,6 +15,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+  min-width: 0;
 }
 
 .location-nav {
@@ -37,6 +37,7 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 32px;
+  overflow: hidden;
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
@@ -50,7 +51,6 @@
   overflow: hidden;
 
   @media (max-width: 900px) {
-    width: 90%;
     margin: auto;
   }
 }
@@ -207,6 +207,7 @@
 
 /* BOOKING CARD */
 .booking-card {
+  min-width: 0;
   position: sticky;
   top: 100px;
   background: rgba(173, 182, 195, 0.5);
