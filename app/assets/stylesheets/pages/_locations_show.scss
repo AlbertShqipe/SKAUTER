@@ -7,6 +7,12 @@
   color: white;
 }
 
+.location-main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
 .location-nav {
   margin-bottom: 16px;
 
@@ -26,6 +32,7 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 32px;
+
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
   }
