@@ -41,7 +41,7 @@
 
 /* HERO */
 .location-images {
-  width: 800px;
+  width: 800px !important;
   border-radius: 10px;
   overflow: hidden;
 
@@ -102,7 +102,7 @@
 }
 
 .gallery-thumbs {
-  width: 900px;
+  width: 800px !important;
   display: flex;
   gap: 0.5rem;
   overflow-x: auto;
