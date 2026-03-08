@@ -1,0 +1,34 @@
+<%# app/views/admin/site_settings/index.html.erb %>
+<div class="admin-section">
+  <h1>Site Settings</h1>
+
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Setting</th>
+        <th>Status</th>
+        <th>Toggle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @settings.each do |setting| %>
+        <tr>
+          <td><%= setting.key.humanize %> (display ALL, booking with time)</td>
+          <td>
+            <span class="status-badge <%= setting.value ? 'status-approved' : 'status-rejected' %>">
+              <%= setting.value ? "ON" : "OFF" %>
+            </span>
+          </td>
+          <td>
+            <%= form_with url: admin_site_setting_path(setting.key), method: :patch do |f| %>
+              <%= hidden_field_tag :value, (!setting.value).to_s %>
+              <button type="submit" class="<%= setting.value ? 'btn-reject' : 'btn-approve' %>">
+                <%= setting.value ? "Turn OFF" : "Turn ON" %>
+              </button>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

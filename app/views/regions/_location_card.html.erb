@@ -38,12 +38,13 @@
       <span>
         👥 Up to <%= location.capacity %> people
       </span>
-
-      <% if location.price_per_hour.present? %>
-        <span class="location-price">
-          ALL <%= location.price_per_hour %>
-          <small>per hour</small>
-        </span>
+      <% if SiteSetting.enabled?("show_classic_booking") %>
+        <% if location.price_per_hour.present? %>
+          <span class="location-price">
+            ALL <%= location.price_per_hour %>
+            <small>per hour</small>
+          </span>
+        <% end %>
       <% end %>
     </div>
 

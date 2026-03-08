@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :venues, only: [:index, :show, :update]
     resources :bookings, only: %i[index show update]
     resources :general_bookings, only: [:index, :show, :update]
+    resources :site_settings, param: :key, only: [:index, :update]
   end
 
   # User favorites

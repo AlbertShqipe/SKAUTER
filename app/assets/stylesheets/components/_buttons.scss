@@ -69,3 +69,23 @@
     transition: transform 0.8s ease;
   }
 }
+
+.btn-reject {
+  background-color: $red;
+  color: $white;
+  border-radius: 6px;
+
+  &:hover {
+    background-color: darken($red, 10%);
+  }
+}
+
+.btn-approve {
+  background-color: $green;
+  color: $white;
+  border-radius: 6px;
+
+  &:hover {
+    background-color: darken($green, 10%);
+  }
+}
