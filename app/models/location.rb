@@ -8,6 +8,7 @@ class Location < ApplicationRecord
   has_many :favorited_by, through: :favorites, source: :user
 
   has_many :bookings, dependent: :destroy
+  has_many :general_bookings, dependent: :destroy
 
   scope :available, -> { where(available: true) }
 

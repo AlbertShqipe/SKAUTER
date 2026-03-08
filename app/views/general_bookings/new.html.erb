@@ -1,0 +1,104 @@
+<div class="general-booking-page">
+  <section class="list-venue-hero">
+    <div class="container">
+      <h1>Location Inquiry</h1>
+      <p>
+        Interested in this location? Fill out the form and our team will get back to you with availability and next steps.
+      </p>
+    </div>
+  </section>
+  <aside class="form-card general-booking-card-form">
+    <div class="booking-location-summary">
+      <div class="booking-location-header">
+        <p class="booking-location-name"><%= @location.name %></p>
+        <% if @location.cover_image.present? %>
+          <%= image_tag @location.cover_image, class: "booking-thumb" %>
+        <% end %>
+      </div>
+      <div class="booking-info">
+        <p>👥 Up to <%= @location.capacity %> people</p>
+        <p class="available">✔ Available for booking</p>
+      </div>
+    </div>
+
+    <hr class="booking-divider">
+
+    <%= form_with model: [@location, GeneralBooking.new], class: "general-booking-form" do |f| %>
+
+      <div class="booking-step">
+        <div class="booking-step-header">
+          <h3>Your information</h3>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :name, "Full Name" %>
+          <%= f.text_field :name, required: true, placeholder: "Jane Smith" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :email, "Email" %>
+          <%= f.email_field :email, required: true, placeholder: "jane@studio.com" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :phone, "Mobile phone (optional)" %>
+          <%= f.telephone_field :phone, placeholder: "+355 69 000 0000" %>
+        </div>
+      </div>
+
+      <hr class="booking-divider">
+
+      <div class="booking-step">
+        <div class="booking-step-header">
+          <h3>Your project details</h3>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :activity_type, "Activity" %>
+          <%= f.select :activity_type,
+            ["Film Production", "Photo Shoot", "Commercial", "Music Video",
+            "Documentary", "Event", "Wedding", "Other"],
+            { include_blank: "Select activity" } %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :crew_size, "Cast & Crew" %>
+          <%= f.select :crew_size,
+            ["1 - 5 people", "6 - 15 people", "16 - 30 people",
+            "31 - 50 people", "50+ people"],
+            { include_blank: "Select size" } %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :project_name, "Project name" %>
+          <%= f.text_field :project_name, placeholder: "My Film Project" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :company, "Renter / Company (optional)" %>
+          <%= f.text_field :company, placeholder: "Studio name" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :starts_at, "Start date" %>
+          <%= f.date_field :starts_at, required: true %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :ends_at, "End date" %>
+          <%= f.date_field :ends_at, required: true %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :notes, "About your project" %>
+          <%= f.text_area :notes, rows: 4,
+              placeholder: "Let the team know what you're planning..." %>
+        </div>
+      </div>
+
+      <%= f.button "Send Enquiry", class: "btn btn-navbar btn-gold-shimmer w-100" %>
+      <p class="booking-note">The team will get back to you by email to confirm.</p>
+
+    <% end %>
+  </aside>
+</div>
