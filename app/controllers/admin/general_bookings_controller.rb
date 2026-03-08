@@ -5,7 +5,10 @@ class Admin::GeneralBookingsController < ApplicationController
 
   def index
     @bookings = GeneralBooking.includes(:user, :location)
-                              .order(created_at: :desc)
+
+    @bookings = @bookings.where(status: params[:status]) if params[:status].present?
+
+    @bookings = @bookings.order(created_at: :desc)
   end
 
   def show

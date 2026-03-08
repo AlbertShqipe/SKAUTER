@@ -2,7 +2,11 @@ class Admin::BookingsController < Admin::BaseController
   before_action :set_booking, only: %i[show update]
 
   def index
-    @bookings = Booking.includes(:user, :location).order(created_at: :desc)
+    @bookings = Booking.includes(:user, :location)
+
+    @bookings = @bookings.where(status: params[:status]) if params[:status].present?
+
+    @bookings = @bookings.order(created_at: :desc)
   end
 
   def show; end

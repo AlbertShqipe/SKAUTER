@@ -3,10 +3,21 @@
     <h1>Bookings</h1>
 
     <div class="admin-actions">
-      <%= link_to "All", admin_bookings_path, class: "admin-link" %>
-      <%= link_to "Pending", admin_bookings_path(status: "pending"), class: "admin-link" %>
-      <%= link_to "Approved", admin_bookings_path(status: "approved"), class: "admin-link" %>
-      <%= link_to "Rejected", admin_bookings_path(status: "rejected"), class: "admin-link" %>
+      <%= link_to "All",
+        admin_bookings_path,
+        class: "admin-link #{"active-bookings" if params[:status].blank?}" %>
+
+      <%= link_to "Pending",
+        admin_bookings_path(status: "pending"),
+        class: "admin-link #{"active-bookings" if params[:status] == "pending"}" %>
+
+      <%= link_to "Approved",
+        admin_bookings_path(status: "approved"),
+        class: "admin-link #{"active-bookings" if params[:status] == "approved"}" %>
+
+      <%= link_to "Rejected",
+        admin_bookings_path(status: "rejected"),
+        class: "admin-link #{"active-bookings" if params[:status] == "rejected"}" %>
     </div>
   </div>
 
