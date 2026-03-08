@@ -1,12 +1,30 @@
+.general-booking-page {
+  padding: 4rem 1rem 6rem;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
 .general-booking-card-form {
   position: relative;
   z-index: 3;
-  margin: 100px auto 20px auto;
+  margin: 0 auto;
+
+  @media (max-width:760px) {
+    width: 90%;
+  }
 
   .booking-location-header {
     display: flex;
     align-items: center;
     gap: 16px;
+
+    @media (max-width: 760px) {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+    }
 
     .booking-location-name {
       color: $skauter-gold;
@@ -29,6 +47,13 @@
       height: auto;
       object-fit: cover;
       border-radius: 8px;
+
+      @media (max-width: 760px) {
+        position: relative;
+        width: 100%;
+        right: 0px;
+        top: 0px;
+      }
     }
 
     .booking-info {

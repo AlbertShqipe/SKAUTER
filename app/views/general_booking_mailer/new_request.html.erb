@@ -1,4 +1,4 @@
-<div style="background-color: #ffffffff; padding: 20px; border-radius: 5px; max-width: 1000px; margin: auto;">
+<div style="background: rgba(173, 182, 195, 0.5); padding: 20px; border-radius: 5px; max-width: 1000px; margin: auto;">
 
   <h2>New Booking Enquiry</h2>
 
@@ -17,7 +17,10 @@
   <p><strong>Dates:</strong> <%= @booking.starts_at.strftime("%d %b %Y") %> → <%= @booking.ends_at.strftime("%d %b %Y") %></p>
   <p><strong>Notes:</strong> <%= @booking.notes.presence || "None" %></p>
   <hr>
-  <p><a href="<%= admin_general_booking_url(@booking) %>">View in Admin Panel</a></p>
+  <p><a href="<%= admin_general_booking_url(@booking) %>"
+        style="display: inline-flex; align-items: center;justify-content: center;gap: 0.5rem;padding: 0.5rem 1rem;
+              border-radius: 0.375rem; font-size: 0.875rem; cursor: pointer; background-color: #007bff;
+              color: #fff; text-decoration: none;">View in Admin Panel</a></p>
 
   <h3 style="text-align:center">SKAUTER.AL</h3>
 

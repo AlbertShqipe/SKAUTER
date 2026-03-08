@@ -33,22 +33,24 @@
       <%= link_to "View", admin_booking_path(booking), class: "btn btn-secondary" %>
     </td>
 
-    <td class="booking-actions">
-      <% if booking.pending? %>
-        <%= button_to "Approve",
-              admin_booking_path(booking, status: "approved"),
-              method: :patch,
-              form: { data: { turbo_stream: true } },
-              class: "btn btn-success" %>
+    <td>
+      <div class="booking-actions">
+        <% if booking.pending? %>
+          <%= button_to "Approve",
+                admin_booking_path(booking, status: "approved"),
+                method: :patch,
+                form: { data: { turbo_stream: true } },
+                class: "btn btn-success" %>
 
-        <%= button_to "Reject",
-              admin_booking_path(booking, status: "rejected"),
-              method: :patch,
-              form: { data: { turbo_stream: true } },
-              class: "btn btn-danger" %>
-      <% else %>
-        —
-      <% end %>
+          <%= button_to "Reject",
+                admin_booking_path(booking, status: "rejected"),
+                method: :patch,
+                form: { data: { turbo_stream: true } },
+                class: "btn btn-danger" %>
+        <% else %>
+          —
+        <% end %>
+      </div>
     </td>
   </tr>
 </turbo-frame>

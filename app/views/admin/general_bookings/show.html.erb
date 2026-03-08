@@ -1,12 +1,37 @@
-<div class="admin-section">
-  <%= link_to "← Back to Enquiries", admin_general_bookings_path %>
+<div class="admin-page">
+  <div class="admin-header">
+    <h1>Enquiry — <%= @booking.location.name %></h1>
 
-  <h1>Enquiry — <%= @booking.location.name %></h1>
+    <div class="admin-actions">
+      <%= link_to "Back", admin_general_bookings_path, class: "admin-link" %>
 
+      <% unless @booking.approved? %>
+        <%= button_to "Approve",
+          admin_general_booking_path(@booking),
+          params: { status: :approved },
+          method: :patch,
+          class: "admin-button" %>
+      <% end %>
+      <% unless @booking.rejected? %>
+        <%= button_to "Reject",
+          admin_general_booking_path(@booking),
+          params: { status: :rejected },
+          method: :patch,
+          class: "admin-button danger" %>
+      <% end %>
+      <% unless @booking.pending? %>
+        <%= button_to "Reset",
+          admin_general_booking_path(@booking),
+          params: { status: :pending },
+          method: :patch,
+          class: "admin-button" %>
+      <% end %>
+    </div>
+  </div>
   <div class="admin-detail">
     <h3>Contact</h3>
     <p><strong>Name:</strong> <%= @booking.name %></p>
-    <p><strong>Email:</strong> <%= @booking.email %></p>
+    <p><strong>Email:</strong> <a href="mailto:<%= @booking.email %>"><%= @booking.email %></a></p>
     <p><strong>Phone:</strong> <%= @booking.phone.presence || "—" %></p>
 
     <h3>Project</h3>
@@ -26,27 +51,7 @@
     </span>
 
     <div class="booking-actions" style="margin-top: 16px">
-      <% unless @booking.approved? %>
-        <%= button_to "Approve",
-          admin_general_booking_path(@booking),
-          params: { status: :approved },
-          method: :patch,
-          class: "btn-approve" %>
-      <% end %>
-      <% unless @booking.rejected? %>
-        <%= button_to "Reject",
-          admin_general_booking_path(@booking),
-          params: { status: :rejected },
-          method: :patch,
-          class: "btn-reject" %>
-      <% end %>
-      <% unless @booking.pending? %>
-        <%= button_to "Reset",
-          admin_general_booking_path(@booking),
-          params: { status: :pending },
-          method: :patch,
-          class: "btn-reset" %>
-      <% end %>
+
     </div>
   </div>
 </div>

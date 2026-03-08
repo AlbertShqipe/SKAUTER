@@ -1,4 +1,5 @@
 class Admin::GeneralBookingsController < ApplicationController
+  layout "admin"
   before_action :require_admin
   before_action :set_booking, only: [:show, :update]
 
@@ -22,6 +23,6 @@ class Admin::GeneralBookingsController < ApplicationController
   end
 
   def require_admin
-    redirect_to root_path unless current_user&.role == "admin"
+    redirect_to root_path unless current_user.admin?
   end
 end
