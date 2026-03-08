@@ -1,0 +1,52 @@
+<div class="admin-section">
+  <%= link_to "← Back to Enquiries", admin_general_bookings_path %>
+
+  <h1>Enquiry — <%= @booking.location.name %></h1>
+
+  <div class="admin-detail">
+    <h3>Contact</h3>
+    <p><strong>Name:</strong> <%= @booking.name %></p>
+    <p><strong>Email:</strong> <%= @booking.email %></p>
+    <p><strong>Phone:</strong> <%= @booking.phone.presence || "—" %></p>
+
+    <h3>Project</h3>
+    <p><strong>Activity:</strong> <%= @booking.activity_type %></p>
+    <p><strong>Project:</strong> <%= @booking.project_name.presence || "—" %></p>
+    <p><strong>Company:</strong> <%= @booking.company.presence || "—" %></p>
+    <p><strong>Crew:</strong> <%= @booking.crew_size.presence || "—" %></p>
+    <p><strong>Dates:</strong>
+      <%= @booking.starts_at&.strftime("%d %b %Y") %> →
+      <%= @booking.ends_at&.strftime("%d %b %Y") %>
+    </p>
+    <p><strong>Notes:</strong> <%= @booking.notes.presence || "—" %></p>
+
+    <h3>Status</h3>
+    <span class="status-badge status-<%= @booking.status %>">
+      <%= @booking.status.capitalize %>
+    </span>
+
+    <div class="booking-actions" style="margin-top: 16px">
+      <% unless @booking.approved? %>
+        <%= button_to "Approve",
+          admin_general_booking_path(@booking),
+          params: { status: :approved },
+          method: :patch,
+          class: "btn-approve" %>
+      <% end %>
+      <% unless @booking.rejected? %>
+        <%= button_to "Reject",
+          admin_general_booking_path(@booking),
+          params: { status: :rejected },
+          method: :patch,
+          class: "btn-reject" %>
+      <% end %>
+      <% unless @booking.pending? %>
+        <%= button_to "Reset",
+          admin_general_booking_path(@booking),
+          params: { status: :pending },
+          method: :patch,
+          class: "btn-reset" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div style="background-color: #ffffffff; padding: 20px; border-radius: 5px; max-width: 1000px; margin: auto;">
+
+  <h2>New Booking Enquiry</h2>
+
+  <p><strong>Location:</strong> <%= @location.name %></p>
+  <hr>
+  <h3>Contact</h3>
+  <p><strong>Name:</strong> <%= @booking.name %></p>
+  <p><strong>Email:</strong> <%= @booking.email %></p>
+  <p><strong>Phone:</strong> <%= @booking.phone.presence || "—" %></p>
+  <hr>
+  <h3>Project</h3>
+  <p><strong>Activity:</strong> <%= @booking.activity_type.presence || "—" %></p>
+  <p><strong>Project name:</strong> <%= @booking.project_name.presence || "—" %></p>
+  <p><strong>Company:</strong> <%= @booking.company.presence || "—" %></p>
+  <p><strong>Crew size:</strong> <%= @booking.crew_size.presence || "—" %></p>
+  <p><strong>Dates:</strong> <%= @booking.starts_at.strftime("%d %b %Y") %> → <%= @booking.ends_at.strftime("%d %b %Y") %></p>
+  <p><strong>Notes:</strong> <%= @booking.notes.presence || "None" %></p>
+  <hr>
+  <p><a href="<%= admin_general_booking_url(@booking) %>">View in Admin Panel</a></p>
+
+  <h3 style="text-align:center">SKAUTER.AL</h3>
+
+  <div style="text-align: center; font-size: 12px; color: #777; margin-top: 20px;">
+    <p>This is an automated message. Please do not reply.</p>
+  </div>
+</div>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # Public read-only locations
   resources :locations, only: %i[index show] do
     resources :bookings, only: %i[new create]
+    resources :general_bookings, only: %i[new create]
     get "availability", to: "bookings#availability"
   end
 
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
     resources :counties
     resources :venues, only: [:index, :show, :update]
     resources :bookings, only: %i[index show update]
+    resources :general_bookings, only: [:index, :show, :update]
   end
 
   # User favorites

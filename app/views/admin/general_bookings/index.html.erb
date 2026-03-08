@@ -1,0 +1,59 @@
+<div class="admin-section">
+  <h1>Booking Enquiries</h1>
+
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Location</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Dates</th>
+        <th>Activity</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.location.name %></td>
+          <td><%= link_to booking.name, admin_general_booking_path(booking) %></td>
+          <td><%= booking.email %></td>
+          <td>
+            <%= booking.starts_at&.strftime("%d %b %Y") %>
+            → <%= booking.ends_at&.strftime("%d %b %Y") %>
+          </td>
+          <td><%= booking.activity_type %></td>
+          <td>
+            <span class="status-badge status-<%= booking.status %>">
+              <%= booking.status.capitalize %>
+            </span>
+          </td>
+          <td class="booking-actions">
+            <% unless booking.approved? %>
+              <%= button_to "Approve",
+                admin_general_booking_path(booking),
+                params: { status: :approved },
+                method: :patch,
+                class: "btn-approve" %>
+            <% end %>
+            <% unless booking.rejected? %>
+              <%= button_to "Reject",
+                admin_general_booking_path(booking),
+                params: { status: :rejected },
+                method: :patch,
+                class: "btn-reject" %>
+            <% end %>
+            <% unless booking.pending? %>
+              <%= button_to "Reset",
+                admin_general_booking_path(booking),
+                params: { status: :pending },
+                method: :patch,
+                class: "btn-reset" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

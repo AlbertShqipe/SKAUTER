@@ -94,7 +94,7 @@
     </div>
 
     <!-- RIGHT: Booking card -->
-    <aside class="booking-card">
+    <aside class="booking-card location-booking-card d-none" >
       <%= form_with model: [@location, Booking.new],
           data: {
           controller: "pricing booking-availability",
@@ -184,6 +184,24 @@
         <% end %>
       <% end %>
 
+    </aside>
+
+    <!-- RIGHT: General Booking card -->
+    <aside class="booking-card general-booking-card">
+      <div class="booking-location-summary">
+        <div class="price">
+          <strong>
+            <span class="currency"><%= @location.name %></span>
+          </strong>
+        </div>
+        <div class="booking-info">
+          <p>👥 Up to <%= @location.capacity %> people</p>
+          <p class="available">✔ Available for booking</p>
+        </div>
+      </div>
+
+      <hr class="booking-divider">
+      <%= link_to "Book this location", new_location_general_booking_path(@location), class: "btn btn-navbar btn-gold-shimmer w-100" %>
     </aside>
 
   </div>
