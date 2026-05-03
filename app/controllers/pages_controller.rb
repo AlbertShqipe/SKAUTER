@@ -1,7 +1,10 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home]
+  skip_before_action :authenticate_user!, only: [:home, :scouting, :services]
 
   def home
+  end
+
+  def scouting
     @counties = County
       .left_joins(:locations)
       .where(locations: { available: true })
@@ -41,5 +44,25 @@ class PagesController < ApplicationController
   end
 
   def list_venue
+  end
+
+  def services
+  end
+
+  def contact
+  end
+
+  def send_message
+    name    = params[:name]
+    email   = params[:email]
+    message = params[:message]
+
+    if name.present? && email.present? && message.present?
+      ContactMailer.new_message(name, email, message).deliver_later
+      redirect_to contact_path, notice: "Message sent! We'll be in touch soon."
+    else
+      flash[:alert] = "Please fill in all fields."
+      render :contact, status: :unprocessable_entity
+    end
   end
 end

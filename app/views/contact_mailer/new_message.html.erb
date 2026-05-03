@@ -1,0 +1,14 @@
+<%# app/views/contact_mailer/new_message.html.erb %>
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>New Contact Message</h2>
+    <p><strong>From:</strong> <%= @name %></p>
+    <p><strong>Email:</strong> <%= @email %></p>
+    <hr>
+    <p><strong>Message:</strong></p>
+    <p><%= simple_format(@message) %></p>
+    <hr>
+    <p>Reply directly to this email to respond to <%= @name %>.</p>
+  </body>
+</html>

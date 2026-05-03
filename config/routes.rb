@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
+  # Static pages
+  get "scouting", to: "pages#scouting"
+  get "services", to: "pages#services"
+  get  "/contact", to: "pages#contact",        as: :contact
+  post "/contact", to: "pages#send_message",   as: :send_contact
+
   # Public read-only locations
   resources :locations, only: %i[index show] do
     resources :bookings, only: %i[new create]

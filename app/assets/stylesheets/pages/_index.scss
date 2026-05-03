@@ -1,5 +1,6 @@
 // Import page-specific CSS files here.
-@import "home";
+@import "homepage";
+@import "scouting";
 @import "show_region";
 @import "admin_location_show";
 @import "admin_layout";
@@ -8,3 +9,5 @@
 @import "list_venue_page";
 @import "admin_bookings";
 @import "general_bookings";
+@import "services";
+@import "contact";
