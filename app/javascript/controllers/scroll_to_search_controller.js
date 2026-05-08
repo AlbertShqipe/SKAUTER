@@ -1,12 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="scroll-to-search"
 export default class extends Controller {
   connect() {
     if (sessionStorage.getItem("scrollToHeroSearch") === "true") {
       sessionStorage.removeItem("scrollToHeroSearch")
 
-      // let layout + images settle
       setTimeout(() => {
         this.scrollAndOpen()
       }, 300)
@@ -16,18 +14,19 @@ export default class extends Controller {
   go(event) {
     event.preventDefault()
 
-    const isHome = window.location.pathname === "/"
+    const isScouting = window.location.pathname === "/scouting"
 
-    // 1️⃣ If NOT on homepage → go there and remember intent
-    if (!isHome) {
+    // If NOT on scouting page → go there and remember intent
+    if (!isScouting) {
       sessionStorage.setItem("scrollToHeroSearch", "true")
-      window.location.href = "/"
+      window.location.href = "/scouting"
       return
     }
 
-    // 2️⃣ We ARE on homepage → continue normally
+    // We ARE on scouting page → continue normally
     this.scrollAndOpen()
   }
+
   scrollAndOpen() {
     const target = document.getElementById("hero-search")
     const slideshow = document.querySelector(".slideshow")
@@ -47,7 +46,6 @@ export default class extends Controller {
       const activityField = target.querySelector(
         '[data-action*="toggleActivity"]'
       )
-
       if (activityField) {
         activityField.click()
       }
