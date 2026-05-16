@@ -105,3 +105,13 @@
     &:hover { text-decoration: underline; }
   }
 }
+
+.contact-emails {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+
+  li {
+    margin-bottom: 6px;
+  }
+}
